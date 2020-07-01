@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">Kawarung</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="login">Login</string>
+    <string name="email_or_no_hp">EMAIL ATAU NO HP</string>
+    <string name="password">PASSWORD</string>
+    <string name="or">atau</string>
+    <string name="you_have_account">Belum punya akun?</string>
+    <string name="register_here">Daftar disini</string>
+    <string name="forgot_password">Lupa Password?</string>
+    <string name="please_wait">Tunggu Sebentar</string>
+    <string name="login_here">Login disini</string>
+    <string name="register">Daftar</string>
+    <string name="full_name">NAMA LENGKAP</string>
+    <string name="email">EMAIL</string>
+    <string name="no_hp">NO HP</string>
+    <string name="retry_password">ULANGI PASSWORD</string>
+    <string name="account">Akun</string>
+    <string name="photo_profile">Photo Profile</string>
+    <string name="icon_button_camera">icon button camera</string>
+    <string name="halo">Halo,</string>
+    <string name="purchase">Pembelian</string>
+    <string name="edit_account">Edit Akun</string>
+    <string name="change_password">Ubah Password</string>
+    <string name="address">Alamat</string>
+    <string name="bank_account">Rekening Bank</string>
+    <string name="logout">Logout</string>
+    <string name="interested_agent">Berminat Menjadi Agen Kawarung?</string>
+    <string name="product">Produk</string>
+    <string name="selling">Penjualan</string>
+    <string name="decs_free_delivery">Free Ongkir (Ditanggung Penjual) Agar Produk anda lebih banyak diminati oleh Pembeli</string>
+    <string name="register_agent">Daftar Jadi Agen</string>
+    <string name="free_delivery">Free Ongkir</string>
+    <string name="save">Simpan</string>
+    <string name="gender">JENIS KELAMIN</string>
+    <string name="men">Laki-laki</string>
+    <string name="women">Perempuan</string>
+    <string name="province">PROVINSI</string>
+    <string name="city">KOTA/ KABUPATEN</string>
+    <string name="sub_district">KECAMATAN</string>
+    <string name="village">Desa</string>
+    <string name="full_address">ALAMAT LENGKAP</string>
+    <string name="postal_code">KODE POS</string>
+    <string name="password_old">PASSWORD LAMA</string>
+    <string name="password_new">PASSWORD BARU</string>
+    <string name="bank_name">NAMA BANK</string>
+    <string name="no_account_bank">NO REKENING</string>
+    <string name="name_owner_bank">ATAS NAMA</string>
+    <string name="branch">CABANG</string>
+    <string name="account_bank">Rekening Bank</string>
+    <string name="detail_product">Detail Produk</string>
+    <string name="email_active">EMAIL AKTIF</string>
+    <string name="no_whats_apps">NO WHATSAPPS</string>
+
+    <string-array name="provinsi">
+        <item>Pilih Provinsi</item>
+    </string-array>
+    <string-array name="kota">
+        <item>Pilih Kota/Kab</item>
+    </string-array>
+    <string-array name="kecamatan">
+        <item>Pilih Kecamatan</item>
+    </string-array>
+    <string-array name="desa">
+        <item>Pilih Kelurahan/Desa</item>
+    </string-array>
+</resources>

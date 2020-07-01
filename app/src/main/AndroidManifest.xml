@@ -20,8 +20,7 @@
         <activity android:name="com.nahltech.kawarung.ui.profile.ChangePasswordActivity" />
         <activity android:name="com.nahltech.kawarung.ui.profile.EditAddressActivity" />
         <activity android:name="com.nahltech.kawarung.ui.profile.EditProfileActivity" />
-        <activity android:name="com.nahltech.kawarung.ui.home.TrendProductActivity" />
-        <activity android:name="com.nahltech.kawarung.ui.home.NewProductActivity" />
+        <activity android:name="com.nahltech.kawarung.ui.home.ListProductActivity" />
         <activity android:name="com.nahltech.kawarung.auth.RegisterActivity" />
         <activity android:name="com.nahltech.kawarung.MainActivity" />
         <activity android:name="com.nahltech.kawarung.auth.LoginActivity" />

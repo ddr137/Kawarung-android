@@ -116,8 +116,8 @@ interface ApiService {
     ): Call<WrappedResponse<User>>
 
     /** Get Product **/
-    @GET("api/product/best-seller")
-    fun listProductBestSelling() : Call<WrappedListResponse<Product>>
+    @GET("api/product/{product_category_name}")
+    fun listProductBestSelling(@Path("product_category_name") programCategoryId : String) : Call<WrappedListResponse<Product>>
 
     @GET("api/product/new")
     fun listProductNew() : Call<WrappedListResponse<Product>>
@@ -127,5 +127,5 @@ interface ApiService {
     @POST("api/product/category")
     fun accountBank(
         @Field("category_id") categoryId: String
-    ): Call<WrappedResponse<User>>
+    ): Call<WrappedListResponse<Product>>
 }

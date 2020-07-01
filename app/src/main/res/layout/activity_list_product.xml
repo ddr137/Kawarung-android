@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    tools:context=".ui.home.TrendProductActivity">
+    tools:context=".ui.home.ListProductActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar_discount_product"
@@ -26,8 +26,8 @@
             <TextView
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/colorWhite"
-                android:text="Produk Diskon"
-                android:id="@+id/toolbar_title_list_donation"
+                android:text="Judul"
+                android:id="@+id/toolbar_title_list_product"
                 style="@style/TextRegular"
                 android:textSize="20sp" />
 

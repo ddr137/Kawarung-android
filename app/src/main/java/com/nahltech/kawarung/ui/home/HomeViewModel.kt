@@ -16,9 +16,9 @@ class HomeViewModel: ViewModel() {
     private var productNew = MutableLiveData<List<Product>>()
     private var state: SingleLiveEvent<HomeState> = SingleLiveEvent()
 
-    fun fetchProductTrend(){
+    fun fetchProductTrend(programCategoryId: String){
         state.value = HomeState.IsLoading(true)
-        api.listProductBestSelling().enqueue(object : Callback<WrappedListResponse<Product>> {
+        api.listProductBestSelling(programCategoryId).enqueue(object : Callback<WrappedListResponse<Product>> {
             override fun onFailure(call: Call<WrappedListResponse<Product>>, t: Throwable) {
                 state.value = HomeState.Error(t.message)
             }

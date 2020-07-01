@@ -8,28 +8,28 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.nahltech.kawarung.R
 import com.nahltech.kawarung.adapters.DetailProductAdapter
-import kotlinx.android.synthetic.main.activity_new_product.*
+import kotlinx.android.synthetic.main.activity_list_product.*
 
-class NewProductActivity : AppCompatActivity() {
+class ListProductActivity : AppCompatActivity() {
     private lateinit var homeViewModel: HomeViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_new_product)
-        toolbarUI()
+        setContentView(R.layout.activity_list_product)
         setupRecycler()
         setupViewModel()
+        toolbarUI()
+        toolbar_title_list_product.text = intent.getStringExtra("product_category_title")
     }
-
     private fun toolbarUI() {
-        setSupportActionBar(toolbar_new_product)
+        setSupportActionBar(toolbar_trend_product)
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        toolbar_new_product.setNavigationIcon(R.drawable.ic_back_white)
-        toolbar_new_product.setNavigationOnClickListener { finish() }
+        toolbar_trend_product.setNavigationIcon(R.drawable.ic_back_white)
+        toolbar_trend_product.setNavigationOnClickListener { finish() }
     }
     private fun setupViewModel() {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        homeViewModel.getProductNew().observe(this, Observer {
-            rv_new_categories_more.adapter?.let { adapter ->
+        homeViewModel.getProductBestSelling().observe(this, Observer {
+            rv_trend_categories_more.adapter?.let { adapter ->
                 if (adapter is DetailProductAdapter) {
                     adapter.setListProductDetail(it)
                 }
@@ -42,7 +42,7 @@ class NewProductActivity : AppCompatActivity() {
     }
     override fun onResume() {
         super.onResume()
-        homeViewModel.fetchProductNew()
+        homeViewModel.fetchProductTrend(intent.getStringExtra("product_category_name")!!.toString())
     }
     private fun handleUIState(it: HomeState) {
         when (it) {
@@ -69,9 +69,10 @@ class NewProductActivity : AppCompatActivity() {
     private fun toast(message: String?) = Toast.makeText(this, message, Toast.LENGTH_LONG).show()
 
     private fun setupRecycler() {
-        rv_new_categories_more.apply {
+        rv_trend_categories_more.apply {
             layoutManager = GridLayoutManager(context, 2)
             adapter = DetailProductAdapter(mutableListOf(), context)
         }
     }
+
 }

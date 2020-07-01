@@ -54,11 +54,17 @@ class HomeFragment : Fragment() {
 
     private fun setOnClick() {
         more_trend.setOnClickListener {
-            val moveIntent = Intent(context, TrendProductActivity::class.java)
+            val moveIntent = Intent(context, ListProductActivity::class.java).apply {
+                putExtra("product_category_name", "best-seller")
+                putExtra("product_category_title", "Produk Terlaris")
+            }
             startActivity(moveIntent)
         }
         more_new.setOnClickListener {
-            val moveIntent = Intent(context, NewProductActivity::class.java)
+            val moveIntent = Intent(context, ListProductActivity::class.java).apply {
+                putExtra("product_category_name", "new")
+                putExtra("product_category_title", "Produk Terbaru")
+            }
             startActivity(moveIntent)
         }
     }
@@ -88,7 +94,7 @@ class HomeFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        homeViewModel.fetchProductTrend()
+        homeViewModel.fetchProductTrend("best-seller".toString())
         homeViewModel.fetchProductNew()
     }
 

@@ -60,11 +60,10 @@ class HomeProductAdapter(
             //itemView.image_product.load(bestSelling.images.size)
             itemView.price_product.text = formatRupiah.format(product.discountPrice!!.toDouble()) + "/ ${product.unit}"
             itemView.min_order.text = "Min." +  " ${product.minimumBuy}" + " ${product.unit}"
-            //itemView.seller_name.text = product.seller.name
-            //zzitemView.seller_address.text = product.seller.address
 
             itemView.setOnClickListener {
                 context.startActivity(Intent(context, DetailProductActivity::class.java).apply {
+                    putExtra("product_id", product.id)
                     putExtra("slug", product.slug)
                     putExtra("unit", product.unit)
                     putExtra("category", product.category.categoryName)

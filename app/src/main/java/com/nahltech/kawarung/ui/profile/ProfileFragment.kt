@@ -51,6 +51,12 @@ class ProfileFragment : Fragment() {
         setupViewModel()
         logout()
         click()
+        if (context?.let { Constants.getToken(it) } == "undefined"
+            && context?.let { Constants.getIdUser(it) } == "undefined"
+        ) startActivity(Intent(context, LoginActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        })
     }
 
     @SuppressLint("SetTextI18n")

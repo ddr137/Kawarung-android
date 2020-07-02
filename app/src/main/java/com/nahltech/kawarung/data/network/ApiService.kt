@@ -1,9 +1,6 @@
 package com.nahltech.kawarung.data.network
 
-import com.nahltech.kawarung.data.models.Banner
-import com.nahltech.kawarung.data.models.Register
-import com.nahltech.kawarung.data.models.ResponseImageUploader
-import com.nahltech.kawarung.data.models.User
+import com.nahltech.kawarung.data.models.*
 import com.nahltech.kawarung.data.models.address.City
 import com.nahltech.kawarung.data.models.address.District
 import com.nahltech.kawarung.data.models.address.Province
@@ -128,4 +125,14 @@ interface ApiService {
     fun accountBank(
         @Field("category_id") categoryId: String
     ): Call<WrappedListResponse<Product>>
+
+    /** Buy Product **/
+    @FormUrlEncoded
+    @POST("api/users/{id}/product/buy")
+    fun buyProduct(
+        @Path("id") id : String,
+        @Header("Authorization") token : String,
+        @Field("product_id") productId: String,
+        @Field("qty") qty: String
+    ): Call<BuyProduct>
 }

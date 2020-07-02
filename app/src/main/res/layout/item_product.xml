@@ -56,25 +56,6 @@
                 android:id="@+id/min_order"
                 style="@style/TextRegular"
                 tools:text="Min. 10 Item" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="0.5dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/colorGrey" />
-
-            <TextView
-                android:id="@+id/seller_name"
-                style="@style/TextRegular"
-                android:textColor="@color/colorGrey"
-                tools:text="Warunkkita Official" />
-
-            <TextView
-                android:id="@+id/seller_address"
-                style="@style/TextRegular"
-                android:layout_marginBottom="14dp"
-                android:textColor="@color/colorGrey"
-                tools:text="Sumedang Utara" />
         </LinearLayout>
 
         <TextView

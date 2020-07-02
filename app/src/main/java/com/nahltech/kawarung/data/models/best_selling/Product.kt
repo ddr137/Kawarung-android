@@ -20,7 +20,6 @@ data class Product (
     @SerializedName("sold") var sold: String? = null,
     @SerializedName("review_count") var reviewCount: String? = null,
     @SerializedName("status") var status: String? = null,
-    @SerializedName("seller") var seller: Seller,
     @SerializedName("created_at") var createdAt: String? = null,
     @SerializedName("updated_at") var updatedAt: String? = null
 )

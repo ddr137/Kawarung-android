@@ -60,8 +60,8 @@ class DetailProductAdapter(
             //itemView.image_product.load(bestSelling.images.size)
             itemView.price_product.text = formatRupiah.format(product.discountPrice!!.toDouble()) + "/ ${product.unit}"
             itemView.min_order.text = "Min." +  " ${product.minimumBuy}" + " ${product.unit}"
-            itemView.seller_name.text = product.seller.name
-            itemView.seller_address.text = product.seller.address
+            //itemView.seller_name.text = product.seller.name
+            //itemView.seller_address.text = product.seller.address
 
             itemView.setOnClickListener {
                 context.startActivity(Intent(context, DetailProductActivity::class.java).apply {

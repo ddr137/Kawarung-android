@@ -3,6 +3,7 @@ package com.nahltech.kawarung.ui.home
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
 import android.view.Window
@@ -40,7 +41,7 @@ class DetailProductActivity : AppCompatActivity() {
                     flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
                 })
             } else {
-                getCustomLayoutDialog(R.layout.dialog_buy_product, R.color.colorPrimary)
+                getCustomLayoutDialog(R.layout.dialog_buy_product)
             }
         }
     }
@@ -78,8 +79,8 @@ class DetailProductActivity : AppCompatActivity() {
             discount_product_detail.visibility = View.VISIBLE
             discount_price_strike_detail.visibility = View.VISIBLE
             discount_product_detail.text = "${intent.getStringExtra("discount")}%"
-            discount_price_strike_detail.text =
-                formatRupiah.format(intent.getStringExtra("price")!!.toDouble())
+            discount_price_strike_detail.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
+            discount_price_strike_detail.text = formatRupiah.format(intent.getStringExtra("price")!!.toDouble())
             price_product_detail.text = formatRupiah.format(
                 intent.getStringExtra("discount_price")!!.toDouble()
             ) + "/ ${intent.getStringExtra("unit")}"
@@ -97,7 +98,7 @@ class DetailProductActivity : AppCompatActivity() {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun getCustomLayoutDialog(layoutId: Int, colorId: Int) {
+    private fun getCustomLayoutDialog(layoutId: Int) {
         val dialog = Dialog(this)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(layoutId)

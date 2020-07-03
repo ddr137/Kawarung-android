@@ -3,6 +3,7 @@ package com.nahltech.kawarung.adapters
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,6 +52,7 @@ class DetailProductAdapter(
                 else -> {
                     itemView.discount_price_product.visibility = View.VISIBLE
                     itemView.label_discount.visibility = View.VISIBLE
+                    itemView.discount_price_product.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                     itemView.discount_price_product.text = formatRupiah.format(product.price!!.toDouble())
                     itemView.label_discount.text = product.discount + "%"
                 }
@@ -65,6 +67,7 @@ class DetailProductAdapter(
 
             itemView.setOnClickListener {
                 context.startActivity(Intent(context, DetailProductActivity::class.java).apply {
+                    putExtra("product_id", product.id)
                     putExtra("slug", product.slug)
                     putExtra("unit", product.unit)
                     putExtra("category", product.category.categoryName)

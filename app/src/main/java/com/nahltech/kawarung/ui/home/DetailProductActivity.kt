@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.ms.square.android.expandabletextview.ExpandableTextView
 import com.nahltech.kawarung.R
 import com.nahltech.kawarung.auth.LoginActivity
+import com.nahltech.kawarung.ui.cart.CartActivity
 import com.nahltech.kawarung.utils.Constants
 import kotlinx.android.synthetic.main.activity_detail_product.*
 import kotlinx.android.synthetic.main.dialog_buy_product.*
@@ -150,6 +151,8 @@ class DetailProductActivity : AppCompatActivity() {
                 }
             }
             is HomeState.IsSuccess -> {
+                val moveIntent = Intent(this, CartActivity::class.java)
+                startActivity(moveIntent)
                 toast("Berhasil dimasukan ke keranjang")
             }
             is HomeState.IsLoading -> isLoading(it.state)

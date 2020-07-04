@@ -1,8 +1,8 @@
 package com.nahltech.kawarung
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.luseen.spacenavigation.SpaceItem
@@ -10,6 +10,7 @@ import com.luseen.spacenavigation.SpaceNavigationView
 import com.luseen.spacenavigation.SpaceOnClickListener
 import com.nahltech.kawarung.ui.HistoryFragment
 import com.nahltech.kawarung.ui.NotificationFragment
+import com.nahltech.kawarung.ui.cart.CartActivity
 import com.nahltech.kawarung.ui.home.HomeFragment
 import com.nahltech.kawarung.ui.profile.ProfileFragment
 
@@ -40,7 +41,8 @@ class MainActivity : AppCompatActivity() {
 
         spaceNavigationView.setSpaceOnClickListener(object : SpaceOnClickListener {
             override fun onCentreButtonClick() {
-                Toast.makeText(this@MainActivity, "Keranjang", Toast.LENGTH_SHORT).show()
+                val moveIntent = Intent(applicationContext, CartActivity::class.java)
+                startActivity(moveIntent)
             }
 
             override fun onItemClick(itemIndex: Int, itemName: String) {

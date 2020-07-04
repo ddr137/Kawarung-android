@@ -139,9 +139,6 @@ class ProfileFragment : Fragment() {
         } else {
             profile_image.load(user.image)
         }
-        if (user.seller.isNullOrEmpty()) {
-            seller_status.visibility = View.GONE
-        }
 
     }
 

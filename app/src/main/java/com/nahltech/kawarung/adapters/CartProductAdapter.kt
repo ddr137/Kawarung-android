@@ -47,7 +47,6 @@ class CartProductAdapter(
             val formatRupiah = DecimalFormat.getCurrencyInstance(localeID)
 
             itemView.title_product_cart.text = product.name
-            //itemView.price_strikeThrough.text = product.price
             itemView.img_cart.load("https://warunkkita.com/images/product/${product.product_id}/${product.image}")
             itemView.price_product_cart.text = formatRupiah.format(product.discount_price!!.toDouble())
             itemView.total_qty_cart.text = "Jumlah: ${product.qty}" + " ${product.unit}"

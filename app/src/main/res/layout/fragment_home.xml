@@ -32,11 +32,11 @@
 
                 <ImageView
                     android:id="@+id/logo_toolbar"
-                    android:layout_width="34dp"
-                    android:layout_height="27dp"
+                    android:layout_width="37dp"
+                    android:layout_height="42dp"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="18dp"
-                    android:src="@drawable/warkit_logo_orange" />
+                    android:src="@drawable/k_warung_icon_logo" />
 
                 <TextView
                     android:id="@+id/hallo"

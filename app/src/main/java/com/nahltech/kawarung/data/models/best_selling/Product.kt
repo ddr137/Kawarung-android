@@ -7,7 +7,7 @@ data class Product (
     @SerializedName("name") var name: String? = null,
     @SerializedName("slug") var slug: String? = null,
     @SerializedName("category") var category: Category,
-    //@SerializedName("images") var images: List<Int>,
+    @SerializedName("image") var image: String? = null,
     @SerializedName("stock") var stock: String? = null,
     @SerializedName("unit") var unit: String? = null,
     @SerializedName("description") var description: String? = null,

@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.api.load
 import com.nahltech.kawarung.R
 import com.nahltech.kawarung.data.models.best_selling.Product
 import com.nahltech.kawarung.ui.home.DetailProductActivity
@@ -59,7 +60,7 @@ class HomeProductAdapter(
             }
 
             itemView.name_product.text = product.name
-            //itemView.image_product.load(bestSelling.images.size)
+            itemView.image_product.load("https://warunkkita.com/images/product/${product.id}/${product.image}")
             itemView.price_product.text = formatRupiah.format(product.discountPrice!!.toDouble()) + "/ ${product.unit}"
             itemView.min_order.text = "Min." +  " ${product.minimumBuy}" + " ${product.unit}"
 

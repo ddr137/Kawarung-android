@@ -5,25 +5,36 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_cart"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_cart"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorLightRed"
-        app:contentInsetStart="0dp">
+        android:layout_height="wrap_content"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            style="@style/TextRegular"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_cart"
             android:layout_width="match_parent"
-            android:gravity="center"
-            android:text="Keranjang"
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@color/colorLightRed">
 
-    </androidx.appcompat.widget.Toolbar>
+            <TextView
+                style="@style/TextRegular"
+                android:layout_gravity="center_horizontal"
+                android:text="Keranjang"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@+id/toolbar_cart"
+        android:layout_below="@+id/appbar_cart"
         android:id="@+id/rv_cart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

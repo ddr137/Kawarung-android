@@ -6,6 +6,7 @@ data class Product(
     @SerializedName("category_name") val category_name: String? = null,
     @SerializedName("discount") val discount: String? = null,
     @SerializedName("discount_price") val discount_price: String? = null,
+    @SerializedName("price") val price: String? = null,
     @SerializedName("id") val id: Int? = null,
     @SerializedName("image") val image: String? = null,
     @SerializedName("image_id") val image_id: String? = null,

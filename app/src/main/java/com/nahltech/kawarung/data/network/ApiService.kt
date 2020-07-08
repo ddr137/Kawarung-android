@@ -137,9 +137,19 @@ interface ApiService {
         @Field("qty") qty: String
     ): Call<BuyProduct>
 
+    /** Cart **/
     @GET("api/users/{id}/cart")
     fun listCart(
         @Path("id") id_user : String,
         @Header("Authorization") token : String
     ) : Call<WrappedResponse<Data<com.nahltech.kawarung.data.models.cart.Product>>>
+
+    /** Buy Product **/
+    @FormUrlEncoded
+    @POST("api/users/{id}/product/buy")
+    fun deleteProductCart(
+        @Path("id") id : String,
+        @Header("Authorization") token : String,
+        @Field("order_id") orderId: String
+    ): Call<Product>
 }

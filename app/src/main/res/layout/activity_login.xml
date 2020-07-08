@@ -187,7 +187,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/btn_background_socmed"
+                    android:background="@drawable/btn_background_social_media"
                     android:orientation="horizontal"
                     android:padding="7dp">
 
@@ -222,7 +222,7 @@
                     android:id="@+id/fb"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/btn_background_socmed"
+                    android:background="@drawable/btn_background_social_media"
                     android:orientation="horizontal"
                     android:padding="7dp">
 

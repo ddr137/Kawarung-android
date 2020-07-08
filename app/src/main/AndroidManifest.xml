@@ -15,7 +15,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.checkout.CheckoutActivity"></activity>
+        <activity android:name=".ui.history.PurchaseHistoryActivity"></activity>
+        <activity android:name=".ui.confirmPayment.ConfirmPaymentActivity" />
+        <activity android:name=".ui.history.HistoryStatusActivity" />
+        <activity android:name=".ui.checkout.CheckoutSuccessActivity" />
+        <activity android:name=".ui.checkout.CheckoutActivity" />
         <activity android:name=".ui.cart.CartActivity" />
         <activity android:name=".ui.home.DetailProductActivity" />
         <activity android:name=".ui.profile.BankAccountActivity" />

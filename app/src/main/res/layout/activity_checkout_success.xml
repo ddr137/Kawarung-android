@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.checkout.CheckoutSuccessActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_checkout_success"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_checkout_success"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@color/colorLightRed">
+
+            <TextView
+                style="@style/TextRegular"
+                android:layout_gravity="center_horizontal"
+                android:text="Checkout Berhasil"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        style="@style/TextRegular"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/margin_space"
+        android:text="Mohon Tunggu!"
+        android:textAlignment="center"
+        android:textSize="26sp" />
+
+    <TextView
+        style="@style/TextRegular"
+        android:layout_width="match_parent"
+        android:layout_marginStart="@dimen/margin_space"
+        android:layout_marginTop="@dimen/margin_space"
+        android:layout_marginEnd="@dimen/margin_space"
+        android:text="Tim kami sedang menghitung ongkos kirim. Silakan tunggu beberapa menit.
+Maksimal 5 Menit (Dalam Jam Kerja)
+
+Jika lebih dari 5 menit, silakan hubungi kami :"
+        android:textSize="14sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_space"
+        android:layout_marginEnd="@dimen/margin_space"
+        android:layout_marginTop="@dimen/margin_space"
+        android:background="@drawable/btn_bg_rounded_white"
+        android:paddingStart="@dimen/margin_space"
+        android:paddingTop="10dp"
+        android:paddingEnd="@dimen/margin_space"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_whatsapp" />
+
+        <TextView
+            style="@style/TextSemiBold"
+            android:layout_centerHorizontal="true"
+            android:text="Telepon Admin"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_space"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="@dimen/margin_space"
+        android:background="@drawable/btn_bg_rounded_white"
+        android:paddingStart="@dimen/margin_space"
+        android:paddingTop="10dp"
+        android:paddingEnd="@dimen/margin_space"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_whatsapp" />
+
+        <TextView
+            style="@style/TextSemiBold"
+            android:layout_centerHorizontal="true"
+            android:text="Telepon Admin"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_space"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="@dimen/margin_space"
+        android:background="@drawable/btn_bg_rounded_white"
+        android:paddingStart="@dimen/margin_space"
+        android:paddingTop="10dp"
+        android:paddingEnd="@dimen/margin_space"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_whatsapp" />
+
+        <TextView
+            style="@style/TextSemiBold"
+            android:layout_centerHorizontal="true"
+            android:text="Telepon Admin"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+</LinearLayout>

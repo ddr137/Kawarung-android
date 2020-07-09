@@ -7,29 +7,29 @@
     android:paddingTop="15dp">
 
     <ImageView
-        android:scaleType="centerCrop"
-        android:layout_marginStart="15dp"
         android:id="@+id/img_cart"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:layout_marginStart="15dp"
         android:layout_marginEnd="8dp"
+        android:scaleType="centerCrop"
         tools:src="@drawable/beras" />
 
     <TextView
-        android:layout_marginStart="15dp"
         android:id="@+id/label_discount_cart"
         style="@style/TextMedium"
         android:layout_width="30dp"
         android:layout_height="17dp"
+        android:layout_marginStart="15dp"
         android:background="@color/colorYellow"
         android:textAlignment="center"
         tools:text="10%" />
 
     <TextView
-        android:layout_marginEnd="15dp"
         android:id="@+id/title_product_cart"
         style="@style/TextRegular"
         android:layout_height="40dp"
+        android:layout_marginEnd="15dp"
         android:layout_toEndOf="@+id/img_cart"
         tools:text="Beras Cianjur assa sasa sasa sa sa sasedfdsfsdfsdfa" />
 
@@ -40,16 +40,16 @@
         android:layout_marginTop="3dp"
         android:layout_marginEnd="5dp"
         android:layout_toEndOf="@+id/img_cart"
-        tools:text="Rp10.000"
-        android:textSize="11sp" />
+        android:textSize="11sp"
+        tools:text="Rp10.000" />
 
     <TextView
         android:id="@+id/price_product_cart"
         style="@style/TextSemiBold"
         android:layout_below="@+id/title_product_cart"
         android:layout_toEndOf="@+id/price_strikeThrough"
-        tools:text="Rp5.000"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        tools:text="Rp5.000" />
 
     <TextView
         android:id="@+id/total_qty_cart"
@@ -64,8 +64,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/total_qty_cart"
         android:layout_alignParentEnd="true"
-        app:cardCornerRadius="13dp"
         android:layout_marginEnd="15dp"
+        app:cardCornerRadius="13dp"
         app:cardElevation="15dp">
 
         <RelativeLayout

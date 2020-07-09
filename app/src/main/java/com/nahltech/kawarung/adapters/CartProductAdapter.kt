@@ -1,7 +1,9 @@
 package com.nahltech.kawarung.adapters
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Paint
 import android.view.LayoutInflater
 import android.view.View
@@ -14,11 +16,13 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.nahltech.kawarung.R
 import com.nahltech.kawarung.data.models.cart.DataX
+import com.nahltech.kawarung.ui.cart.CartActivity
 import com.nahltech.kawarung.ui.cart.CartViewModel
 import com.nahltech.kawarung.utils.Constants
 import kotlinx.android.synthetic.main.item_list_cart.view.*
 import java.text.DecimalFormat
 import java.util.*
+
 
 class CartProductAdapter(
     private var product: MutableList<DataX>,
@@ -55,11 +59,11 @@ class CartProductAdapter(
             itemView.title_product_cart.text = product.name
             itemView.img_cart.load("https://warunkkita.com/images/product/${product.product_id}/${product.image}")
             itemView.price_product_cart.text =
-                formatRupiah.format(product.discount_price!!.toDouble())
+                formatRupiah.format(product.discount_price.toDouble())
             itemView.total_qty_cart.text = "Jumlah: ${product.qty}"
 
-            when {
-                product.discount.equals("0") -> {
+            when (product.discount) {
+                "0" -> {
                     itemView.price_strikeThrough.visibility = View.GONE
                     itemView.label_discount_cart.visibility = View.GONE
                 }
@@ -68,18 +72,22 @@ class CartProductAdapter(
                     itemView.label_discount_cart.visibility = View.VISIBLE
                     itemView.price_strikeThrough.paintFlags = Paint.STRIKE_THRU_TEXT_FLAG
                     itemView.price_strikeThrough.text =
-                        formatRupiah.format(product.price!!.toDouble())
+                        formatRupiah.format(product.price.toDouble())
                     itemView.label_discount_cart.text = product.discount + "%"
                 }
             }
 
             itemView.delete_product_cart.setOnClickListener {
-                val cartViewModel: CartViewModel = ViewModelProvider(ViewModelStoreOwner { ViewModelStore() }).get(CartViewModel::class.java)
+                val cartViewModel: CartViewModel =
+                    ViewModelProvider(ViewModelStoreOwner { ViewModelStore() }).get(CartViewModel::class.java)
                 val idUser = Constants.getIdUser(context)
                 val token = Constants.getToken(context)
                 val idProduct = product.id.toString()
                 cartViewModel.deleteProductCart(idUser, token, idProduct)
-                Toast.makeText(context, "${product.id}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Berhasil di hapus", Toast.LENGTH_SHORT).show()
+                context.startActivity(Intent(context, CartActivity::class.java).apply {
+                    (context as Activity).finish()
+                })
             }
         }
     }

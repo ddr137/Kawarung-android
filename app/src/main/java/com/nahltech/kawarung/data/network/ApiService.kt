@@ -149,10 +149,10 @@ interface ApiService {
 
     /** Buy Product **/
     @FormUrlEncoded
-    @POST("api/users/{id}/product/buy")
+    @POST("api/users/{id}/cart/delete")
     fun deleteProductCart(
         @Path("id") id : String,
         @Header("Authorization") token : String,
-        @Field("order_id") orderId: String
+        @Field("order_product_id") orderId: String
     ): Call<Product>
 }

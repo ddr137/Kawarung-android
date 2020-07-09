@@ -7,7 +7,7 @@
     android:paddingTop="15dp">
 
     <ImageView
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         android:layout_marginStart="15dp"
         android:id="@+id/img_cart"
         android:layout_width="80dp"

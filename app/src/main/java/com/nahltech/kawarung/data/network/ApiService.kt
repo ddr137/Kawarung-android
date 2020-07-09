@@ -6,7 +6,10 @@ import com.nahltech.kawarung.data.models.address.District
 import com.nahltech.kawarung.data.models.address.Province
 import com.nahltech.kawarung.data.models.address.Village
 import com.nahltech.kawarung.data.models.best_selling.Product
+import com.nahltech.kawarung.data.models.cart.Cart
 import com.nahltech.kawarung.data.models.cart.Data
+import com.nahltech.kawarung.data.models.cart.DataX
+import com.nahltech.kawarung.data.models.cart.OrderProducts
 import com.nahltech.kawarung.utils.WrappedListResponse
 import com.nahltech.kawarung.utils.WrappedResponse
 import io.reactivex.Observable
@@ -142,7 +145,7 @@ interface ApiService {
     fun listCart(
         @Path("id") id_user : String,
         @Header("Authorization") token : String
-    ) : Call<WrappedResponse<Data<com.nahltech.kawarung.data.models.cart.Product>>>
+    ) : Call<Cart<Data<OrderProducts<DataX>>>>
 
     /** Buy Product **/
     @FormUrlEncoded

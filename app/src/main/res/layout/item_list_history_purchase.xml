@@ -46,7 +46,7 @@
             <Button
                 style="@style/ButtonGradient"
                 android:layout_margin="12dp"
-                android:background="@drawable/btn_gradient"
+                android:background="@drawable/btn_gradient_rounded"
                 android:text="Lihat Detail" />
 
         </LinearLayout>

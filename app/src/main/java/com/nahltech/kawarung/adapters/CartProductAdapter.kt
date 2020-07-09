@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
 import coil.api.load
 import com.nahltech.kawarung.R
-import com.nahltech.kawarung.data.models.cart.Product
+import com.nahltech.kawarung.data.models.cart.DataX
 import com.nahltech.kawarung.ui.cart.CartViewModel
 import com.nahltech.kawarung.utils.Constants
 import kotlinx.android.synthetic.main.item_list_cart.view.*
@@ -21,7 +21,7 @@ import java.text.DecimalFormat
 import java.util.*
 
 class CartProductAdapter(
-    private var product: MutableList<com.nahltech.kawarung.data.models.cart.Product>,
+    private var product: MutableList<DataX>,
     private var context: Context
 ) : RecyclerView.Adapter<CartProductAdapter.ViewHolder>(
 ) {
@@ -34,7 +34,7 @@ class CartProductAdapter(
         )
     }
 
-    fun setListProductCart(r: List<com.nahltech.kawarung.data.models.cart.Product>) {
+    fun setListProductCart(r: List<DataX>) {
         product.clear()
         product.addAll(r)
         notifyDataSetChanged()
@@ -47,7 +47,7 @@ class CartProductAdapter(
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         @SuppressLint("SetTextI18n")
-        fun bind(product: Product, context: Context) {
+        fun bind(product: DataX, context: Context) {
 
             val localeID = Locale("in", "ID")
             val formatRupiah = DecimalFormat.getCurrencyInstance(localeID)
@@ -56,7 +56,7 @@ class CartProductAdapter(
             itemView.img_cart.load("https://warunkkita.com/images/product/${product.product_id}/${product.image}")
             itemView.price_product_cart.text =
                 formatRupiah.format(product.discount_price!!.toDouble())
-            itemView.total_qty_cart.text = "Jumlah: ${product.qty}" + " ${product.unit}"
+            itemView.total_qty_cart.text = "Jumlah: ${product.qty}"
 
             when {
                 product.discount.equals("0") -> {

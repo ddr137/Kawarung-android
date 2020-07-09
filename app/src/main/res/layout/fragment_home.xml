@@ -49,7 +49,7 @@
                     style="@style/TextSemiBold"
                     android:layout_below="@+id/hallo"
                     android:layout_toEndOf="@+id/logo_toolbar"
-                    tools:text="Dadan"
+                    tools:text="Silahkan Login"
                     android:textSize="18sp" />
 
                 <RelativeLayout
@@ -95,10 +95,10 @@
         android:elevation="@dimen/margin_space"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingStart="15dp"
-        android:paddingTop="5dp"
-        android:paddingEnd="15dp"
-        android:paddingBottom="5dp">
+        android:paddingStart="@dimen/margin_space"
+        android:paddingTop="10dp"
+        android:paddingEnd="@dimen/margin_space"
+        android:paddingBottom="10dp">
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -108,14 +108,14 @@
             android:focusable="true"
             app:srcCompat="@drawable/ic_search_grey" />
 
-        <EditText
+        <TextView
             android:id="@+id/et_search"
-            style="@style/editText"
+            style="@style/TextRegular"
             android:layout_marginStart="15dp"
-            android:hint="Mau beli apa? Cari disini..."
+            android:text="Mau beli apa? Cari disini..."
             android:textColor="@color/colorGrey">
 
-        </EditText>
+        </TextView>
 
     </LinearLayout>
 

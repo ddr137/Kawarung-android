@@ -1,5 +1,6 @@
 package com.nahltech.kawarung.ui.cart
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nahltech.kawarung.R
 import com.nahltech.kawarung.adapters.CartProductAdapter
+import com.nahltech.kawarung.ui.checkout.CheckoutActivity
 import com.nahltech.kawarung.utils.Constants
 import kotlinx.android.synthetic.main.activity_cart.*
 
@@ -19,6 +21,10 @@ class CartActivity : AppCompatActivity() {
         toolbarUI()
         setupRecycler()
         setupViewModel()
+        btn_buy_cart.setOnClickListener {
+            val moveIntent = Intent(this, CheckoutActivity::class.java)
+            startActivity(moveIntent)
+        }
     }
 
     private fun toolbarUI() {

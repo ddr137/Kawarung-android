@@ -163,7 +163,7 @@
         android:layout_marginStart="@dimen/margin_space"
         android:layout_marginEnd="@dimen/margin_space"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/btn_gradient"
+        android:background="@drawable/btn_gradient_rounded"
         style="@style/ButtonGradient"/>
 
 </RelativeLayout>

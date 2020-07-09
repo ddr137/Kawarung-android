@@ -18,7 +18,7 @@ data class Product (
     @SerializedName("minimum_unit") var minimumUnit: String? = null,
     @SerializedName("fee") var fee: String? = null,
     @SerializedName("sold") var sold: String? = null,
-    @SerializedName("review_count") var reviewCount: String? = null,
+    @SerializedName("viewer_count") var reviewCount: String? = null,
     @SerializedName("status") var status: String? = null,
     @SerializedName("created_at") var createdAt: String? = null,
     @SerializedName("updated_at") var updatedAt: String? = null

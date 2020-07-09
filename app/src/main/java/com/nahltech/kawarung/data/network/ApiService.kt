@@ -7,9 +7,7 @@ import com.nahltech.kawarung.data.models.address.Province
 import com.nahltech.kawarung.data.models.address.Village
 import com.nahltech.kawarung.data.models.best_selling.Product
 import com.nahltech.kawarung.data.models.cart.Cart
-import com.nahltech.kawarung.data.models.cart.Data
-import com.nahltech.kawarung.data.models.cart.DataX
-import com.nahltech.kawarung.data.models.cart.OrderProducts
+import com.nahltech.kawarung.data.models.historyPurchase.HistoryPurchase
 import com.nahltech.kawarung.utils.WrappedListResponse
 import com.nahltech.kawarung.utils.WrappedResponse
 import io.reactivex.Observable
@@ -126,7 +124,7 @@ interface ApiService {
     /** By Category **/
     @FormUrlEncoded
     @POST("api/product/category")
-    fun accountBank(
+    fun accouhntBank(
         @Field("category_id") categoryId: String
     ): Call<WrappedListResponse<Product>>
 
@@ -145,9 +143,16 @@ interface ApiService {
     fun listCart(
         @Path("id") id_user : String,
         @Header("Authorization") token : String
-    ) : Call<Cart<Data<OrderProducts<DataX>>>>
+    ) : Call<Cart>
 
-    /** Buy Product **/
+    /** Cart **/
+    @GET("api/users/{id}/cart")
+    fun subTotalCart(
+        @Path("id") id_user : String,
+        @Header("Authorization") token : String
+    ) : Call<Cart>
+
+    /** Delete Product Cart **/
     @FormUrlEncoded
     @POST("api/users/{id}/cart/delete")
     fun deleteProductCart(
@@ -155,4 +160,11 @@ interface ApiService {
         @Header("Authorization") token : String,
         @Field("order_product_id") orderId: String
     ): Call<Product>
+
+    /** Cart **/
+    @GET("api/users/{id}/shopping")
+    fun d(
+        @Path("id") id_user : String,
+        @Header("Authorization") token : String
+    ) : Call<HistoryPurchase>
 }

@@ -41,6 +41,11 @@ class CheckoutActivity : AppCompatActivity() {
         toolbarUI()
         getProvince()
         setSpinner()
+        fillText()
+    }
+
+    private fun fillText() {
+        sub_total_checkout.text = intent.getStringExtra("sub_total")
     }
 
     private fun toolbarUI() {

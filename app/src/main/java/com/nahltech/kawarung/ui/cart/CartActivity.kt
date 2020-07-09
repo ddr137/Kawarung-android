@@ -9,9 +9,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nahltech.kawarung.R
 import com.nahltech.kawarung.adapters.CartProductAdapter
+import com.nahltech.kawarung.data.models.cart.Data
 import com.nahltech.kawarung.ui.checkout.CheckoutActivity
 import com.nahltech.kawarung.utils.Constants
 import kotlinx.android.synthetic.main.activity_cart.*
+import java.text.DecimalFormat
+import java.util.*
 
 class CartActivity : AppCompatActivity() {
     private lateinit var cartViewModel: CartViewModel
@@ -21,10 +24,7 @@ class CartActivity : AppCompatActivity() {
         toolbarUI()
         setupRecycler()
         setupViewModel()
-        btn_buy_cart.setOnClickListener {
-            val moveIntent = Intent(this, CheckoutActivity::class.java)
-            startActivity(moveIntent)
-        }
+
     }
 
     private fun toolbarUI() {
@@ -44,14 +44,32 @@ class CartActivity : AppCompatActivity() {
             }
         })
 
+        cartViewModel.getSubTotalCart().observe(this, Observer {
+            fill(it)
+        })
+
         cartViewModel.getState().observe(this, Observer {
             handleUIState(it)
         })
     }
 
+    private fun fill(data: Data) {
+        val localeID = Locale("in", "ID")
+        val formatRupiah = DecimalFormat.getCurrencyInstance(localeID)
+        sub_total_cart.text = formatRupiah.format(data.subTotal.toString().toDouble())
+
+        btn_buy_cart.setOnClickListener {
+            val moveIntent = Intent(this, CheckoutActivity::class.java).apply {
+                putExtra("sub_total", formatRupiah.format(data.subTotal.toString().toDouble()))
+            }
+            startActivity(moveIntent)
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         cartViewModel.fetchProductCart(Constants.getIdUser(this), Constants.getToken(this))
+        cartViewModel.fetchSubTotalCart(Constants.getIdUser(this), Constants.getToken(this))
     }
 
     private fun handleUIState(it: CartState) {

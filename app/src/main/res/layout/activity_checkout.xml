@@ -251,6 +251,7 @@
                     android:text="SUBTOTAL"/>
 
                 <TextView
+                    android:id="@+id/sub_total_checkout"
                     android:layout_marginTop="7dp"
                     android:layout_below="@+id/view_divider_checkout"
                     android:textColor="@color/colorWhite"

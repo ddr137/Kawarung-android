@@ -1,4 +1,4 @@
-package com.nahltech.kawarung.ui
+package com.nahltech.kawarung.ui.history
 
 import android.os.Bundle
 import android.view.LayoutInflater

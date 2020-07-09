@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import com.luseen.spacenavigation.SpaceItem
 import com.luseen.spacenavigation.SpaceNavigationView
 import com.luseen.spacenavigation.SpaceOnClickListener
-import com.nahltech.kawarung.ui.HistoryFragment
 import com.nahltech.kawarung.ui.NotificationFragment
 import com.nahltech.kawarung.ui.cart.CartActivity
+import com.nahltech.kawarung.ui.history.HistoryFragment
 import com.nahltech.kawarung.ui.home.HomeFragment
 import com.nahltech.kawarung.ui.profile.ProfileFragment
 
@@ -25,11 +25,11 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val spaceNavigationView = findViewById<SpaceNavigationView>(R.id.space)
+        val spaceNavigationView: SpaceNavigationView = findViewById(R.id.space)
         val fragment = HomeFragment.newInstance()
         addFragment(fragment)
 
@@ -58,7 +58,8 @@ class MainActivity : AppCompatActivity() {
                         return
                     }
                     2 -> {
-                        val fragmentHistory = HistoryFragment()
+                        val fragmentHistory =
+                            HistoryFragment()
                         addFragment(fragmentHistory)
                         return
                     }
@@ -79,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        val spaceNavigationView = findViewById<SpaceNavigationView>(R.id.space)
+        val spaceNavigationView: SpaceNavigationView = findViewById(R.id.space)
         spaceNavigationView.onSaveInstanceState(outState)
     }
 }

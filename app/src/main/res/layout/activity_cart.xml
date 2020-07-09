@@ -58,10 +58,10 @@
             android:text="Subtotal" />
 
         <TextView
-            android:id="@+id/sub_total"
+            android:id="@+id/sub_total_cart"
             style="@style/TextSemiBold"
             android:layout_alignParentEnd="true"
-            android:text="Rp 12.000"
+            tools:text="Rp 12.000"
             android:textSize="14sp" />
 
     </RelativeLayout>

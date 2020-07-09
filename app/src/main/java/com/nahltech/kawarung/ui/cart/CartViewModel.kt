@@ -6,7 +6,6 @@ import com.nahltech.kawarung.data.models.best_selling.Product
 import com.nahltech.kawarung.data.models.cart.Cart
 import com.nahltech.kawarung.data.models.cart.Data
 import com.nahltech.kawarung.data.models.cart.DataX
-import com.nahltech.kawarung.data.models.cart.OrderProducts
 import com.nahltech.kawarung.data.network.ApiClient
 import com.nahltech.kawarung.utils.SingleLiveEvent
 import retrofit2.Call
@@ -16,25 +15,26 @@ import retrofit2.Response
 class CartViewModel : ViewModel() {
     private var api = ApiClient.instance()
     private var productCart = MutableLiveData<List<DataX>>()
+    private var subTotal = MutableLiveData<Data>()
     private var state: SingleLiveEvent<CartState> = SingleLiveEvent()
 
     fun fetchProductCart(id_user: String, token: String) {
         state.value = CartState.IsLoading(true)
         api.listCart(id_user, token).enqueue(object :
-            Callback<Cart<Data<OrderProducts<DataX>>>> {
+            Callback<Cart> {
             override fun onFailure(
-                call: Call<Cart<Data<OrderProducts<DataX>>>>,
+                call: Call<Cart>,
                 t: Throwable
             ) {
                 state.value = CartState.Error(t.message)
             }
 
             override fun onResponse(
-                call: Call<Cart<Data<OrderProducts<DataX>>>>,
-                response: Response<Cart<Data<OrderProducts<DataX>>>>
+                call: Call<Cart>,
+                response: Response<Cart>
             ) {
                 if (response.isSuccessful) {
-                    val body = response.body() as Cart<Data<OrderProducts<DataX>>>
+                    val body = response.body() as Cart
                     if (response.code() == 200) {
                         val r = body.data.orderProducts.data
                         productCart.postValue(r)
@@ -42,6 +42,32 @@ class CartViewModel : ViewModel() {
                     }
                 } else {
                     state.value = CartState.Error("Terjadi kesalahan. Gagal mendapatkan response")
+                }
+                state.value = CartState.IsLoading(false)
+            }
+        })
+    }
+
+    fun fetchSubTotalCart(id_user: String, token: String) {
+        state.value = CartState.IsLoading(true)
+        api.subTotalCart(id_user, token).enqueue(object : Callback<Cart> {
+            override fun onFailure(call: Call<Cart>, t: Throwable) {
+                println(t.message)
+                state.value = CartState.Error(t.message)
+            }
+
+            override fun onResponse(
+                call: Call<Cart>,
+                response: Response<Cart>
+            ) {
+                if (response.isSuccessful) {
+                    val body = response.body() as Cart
+                    if (response.code() == 200) {
+                        val r = body.data
+                        subTotal.postValue(r)
+                    }
+                } else {
+                    state.value = CartState.Failed("Gagal mendapatkan response dari server")
                 }
                 state.value = CartState.IsLoading(false)
             }
@@ -76,6 +102,7 @@ class CartViewModel : ViewModel() {
     }
 
     fun getProductCart() = productCart
+    fun getSubTotalCart() = subTotal
     fun getState() = state
 
 }

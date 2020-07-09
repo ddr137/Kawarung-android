@@ -45,6 +45,8 @@ class CheckoutActivity : AppCompatActivity() {
     }
 
     private fun fillText() {
+        qty_checkout.text = intent.getStringExtra("qty")
+        price_piece.text = intent.getStringExtra("total_discount")
         sub_total_checkout.text = intent.getStringExtra("sub_total")
     }
 

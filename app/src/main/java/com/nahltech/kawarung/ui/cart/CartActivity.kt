@@ -60,6 +60,8 @@ class CartActivity : AppCompatActivity() {
 
         btn_buy_cart.setOnClickListener {
             val moveIntent = Intent(this, CheckoutActivity::class.java).apply {
+                putExtra("qty", formatRupiah.format(data.qty.toString().toDouble()))
+                putExtra("total_discount", formatRupiah.format(data.total_discount.toString().toDouble()))
                 putExtra("sub_total", formatRupiah.format(data.subTotal.toString().toDouble()))
             }
             startActivity(moveIntent)

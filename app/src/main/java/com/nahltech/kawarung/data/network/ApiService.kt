@@ -163,7 +163,7 @@ interface ApiService {
 
     /** Cart **/
     @GET("api/users/{id}/shopping")
-    fun d(
+    fun historyPurchase(
         @Path("id") id_user : String,
         @Header("Authorization") token : String
     ) : Call<HistoryPurchase>

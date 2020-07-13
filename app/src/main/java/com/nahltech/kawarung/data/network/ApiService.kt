@@ -186,4 +186,11 @@ interface ApiService {
         @Field("total_discount") total_discount: String,
         @Field("subtotal") subtotal: String
     ): Call<Responses>
+
+    /** Search Product Cart **/
+    @FormUrlEncoded
+    @POST("api/product/search")
+    fun searchProduct(
+        @Field("term") term: String
+    ): Call<WrappedListResponse<Product>>
 }

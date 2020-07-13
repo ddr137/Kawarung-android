@@ -19,6 +19,7 @@ import com.nahltech.kawarung.adapters.HomeProductAdapter
 import com.nahltech.kawarung.adapters.MySliderAdapter
 import com.nahltech.kawarung.data.models.Banner
 import com.nahltech.kawarung.data.network.ApiClient
+import com.nahltech.kawarung.ui.search.SearchActivity
 import com.nahltech.kawarung.utils.Constants
 import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
@@ -65,6 +66,10 @@ class HomeFragment : Fragment() {
                 putExtra("product_category_name", "new")
                 putExtra("product_category_title", "Produk Terbaru")
             }
+            startActivity(moveIntent)
+        }
+        search_product_home.setOnClickListener {
+            val moveIntent = Intent(context, SearchActivity::class.java)
             startActivity(moveIntent)
         }
     }

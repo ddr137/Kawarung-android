@@ -1,5 +1,6 @@
 package com.nahltech.kawarung.ui.home
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -45,12 +46,17 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecycler()
         setupViewModel()
         setOnClick()
-        name_of_user.text = context?.let { Constants.getNameUser(it) }
+        if (Constants.getNameUser(requireContext()) == "undefined") {
+            name_of_user.text = "Silahkan login"
+        } else {
+            name_of_user.text = context?.let { Constants.getNameUser(it) }
+        }
     }
 
     private fun setOnClick() {

@@ -83,10 +83,10 @@ interface ApiService {
     fun editAddress(
         @Header("Authorization") token: String,
         @Path("id") id: String,
-        @Field("province_name") provinceId: String,
-        @Field("city_name") cityId: String,
-        @Field("districts_name") districtId: String,
-        @Field("village_name") villageId: String,
+        @Field("province") provinceId: String,
+        @Field("city") cityId: String,
+        @Field("districts") districtId: String,
+        @Field("village") villageId: String,
         @Field("address") completeAddress: String,
         @Field("postal_code") postalCode: String
     ): Call<WrappedResponse<User>>

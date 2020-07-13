@@ -30,7 +30,7 @@ class ProfileViewModel : ViewModel() {
             ) {
                 if (response.isSuccessful) {
                     val body = response.body() as WrappedResponse<User>
-                    if (body.status.equals("1")) {
+                    if (response.code() == 200) {
                         val r = body.data
                         users.postValue(r)
                     }
@@ -62,7 +62,7 @@ class ProfileViewModel : ViewModel() {
                 ) {
                     if (response.isSuccessful) {
                         val body = response.body() as WrappedResponse<User>
-                        if (body.status.equals("1")) {
+                        if (response.code() == 200) {
                             state.value = UsersState.IsSuccess(1)
                         } else {
                             state.value = UsersState.Failed("Gagal saat mengupdate akun. :(")
@@ -108,7 +108,7 @@ class ProfileViewModel : ViewModel() {
                 ) {
                     if (response.isSuccessful) {
                         val body = response.body() as WrappedResponse<User>
-                        if (body.status.equals("1")) {
+                        if (response.code() == 200) {
                             state.value = UsersState.IsSuccess(1)
                         } else {
                             state.value = UsersState.Error("Gagal saat mengupdate akun. :(")
@@ -142,7 +142,7 @@ class ProfileViewModel : ViewModel() {
                 ) {
                     if (response.isSuccessful) {
                         val body = response.body() as WrappedResponse<User>
-                        if (body.status.equals("1")) {
+                        if (response.code() == 200) {
                             state.value = UsersState.IsSuccess(1)
                         } else {
                             state.value = UsersState.Failed("Gagal saat mengupdate recipe. :(")

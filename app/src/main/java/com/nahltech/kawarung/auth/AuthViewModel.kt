@@ -29,7 +29,7 @@ class AuthViewModel : ViewModel() {
             ) {
                 if (response.isSuccessful) {
                     val body = response.body() as WrappedResponse<User>
-                    if (body.status.equals("1")) {
+                    if (response.code() == 200) {
                         state.value = UserState.Success(
                             "Bearer ${body.data!!.api_token}",
                             "${body.data!!.id}",

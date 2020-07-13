@@ -27,7 +27,7 @@ class HomeViewModel: ViewModel() {
             override fun onResponse(call: Call<WrappedListResponse<Product>>, response: Response<WrappedListResponse<Product>>) {
                 if(response.isSuccessful){
                     val body = response.body() as WrappedListResponse<Product>
-                    if(body.status.equals("1")){
+                    if(response.code() == 200){
                         val r = body.data
                         bestSelling.postValue(r)
                     }
@@ -48,7 +48,7 @@ class HomeViewModel: ViewModel() {
             override fun onResponse(call: Call<WrappedListResponse<Product>>, response: Response<WrappedListResponse<Product>>) {
                 if(response.isSuccessful){
                     val body = response.body() as WrappedListResponse<Product>
-                    if(body.status.equals("1")){
+                    if(response.code() == 200){
                         val r = body.data
                         productNew.postValue(r)
                     }

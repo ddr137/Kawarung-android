@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nahltech.kawarung.R
 import com.nahltech.kawarung.data.models.historyPurchase.Data
+import kotlinx.android.synthetic.main.item_list_history_purchase.view.*
 
 class HistoryPurchaseAdapter(
     private var history: MutableList<Data>,
@@ -37,7 +38,7 @@ class HistoryPurchaseAdapter(
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         @SuppressLint("SetTextI18n")
         fun bind(history: Data, context: Context) {
-
+        itemView.no_invoice.text = history.invoice
 
         }
     }

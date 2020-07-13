@@ -35,9 +35,9 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <ScrollView
-        android:layout_below="@+id/appbar_checkout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/appbar_checkout"
         android:background="@color/alabaster">
 
         <LinearLayout
@@ -163,9 +163,12 @@
                 android:text="TAMBAHKAN CATATAN (BOLEH KOSONG)" />
 
             <EditText
+                android:paddingTop="5dp"
+                android:gravity="top"
+                android:id="@+id/note_checkout"
                 style="@style/editText"
                 android:layout_width="match_parent"
-                android:layout_height="80dp" />
+                android:layout_height="75dp" />
 
             <TextView
                 style="@style/TextSemiBold"
@@ -174,100 +177,136 @@
                 android:text="METODE PEMBAYARAN" />
 
             <RadioGroup
+                android:id="@+id/rg_payment_method"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_space"
                 android:layout_marginEnd="@dimen/margin_space">
 
                 <RadioButton
+                    android:id="@+id/cod_method"
                     style="@style/TextRegular"
                     android:text="COD / Bayar Ditempat" />
 
                 <RadioButton
+                    android:id="@+id/bank_method"
                     style="@style/TextRegular"
                     android:text="Bank Transfer" />
 
             </RadioGroup>
 
             <View
-                android:layout_marginTop="17dp"
-                android:background="@color/colorGray"
                 android:layout_width="match_parent"
-                android:layout_height="0.5dp"/>
+                android:layout_height="0.5dp"
+                android:layout_marginTop="17dp"
+                android:background="@color/colorGray" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:padding="@dimen/margin_space"
+                android:id="@+id/rv_checkout"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"/>
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_space"
+                app:fastScrollEnabled="false" />
 
             <RelativeLayout
-                android:padding="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_space"
                 android:background="@drawable/bg_checkout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:padding="15dp">
 
                 <TextView
-                    android:textColor="@color/colorWhite"
                     android:id="@+id/tv_total_qty"
                     style="@style/TextRegular"
-                    android:text="Jumlah / QTY"/>
+                    android:text="Jumlah / QTY"
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
                     android:id="@+id/tv_discount_price"
-                    android:layout_marginTop="5dp"
-                    android:textColor="@color/colorWhite"
-                    android:layout_below="@+id/tv_total_qty"
                     style="@style/TextRegular"
-                    android:text="Diskon / Potongan\nHarga"/>
+                    android:layout_below="@+id/tv_total_qty"
+                    android:layout_marginTop="5dp"
+                    android:text="Diskon / Potongan\nHarga"
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
                     android:id="@+id/qty_checkout"
-                    android:layout_alignParentEnd="true"
-                    android:textColor="@color/colorWhite"
                     style="@style/TextRegular"
-                    android:text="1"/>
+                    android:layout_alignParentEnd="true"
+                    android:text="1"
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
                     android:id="@+id/price_piece"
+                    style="@style/TextRegular"
                     android:layout_below="@+id/tv_total_qty"
                     android:layout_alignParentEnd="true"
-                    android:textColor="@color/colorWhite"
-                    style="@style/TextRegular"
-                    android:text="Rp0"/>
+                    android:text="Rp0"
+                    android:textColor="@color/colorWhite" />
 
                 <View
                     android:id="@+id/view_divider_checkout"
-                    android:layout_marginTop="7dp"
-                    android:layout_below="@+id/tv_discount_price"
-                    android:background="@color/colorGray"
                     android:layout_width="match_parent"
-                    android:layout_height="0.5dp"/>
+                    android:layout_height="0.5dp"
+                    android:layout_below="@+id/tv_discount_price"
+                    android:layout_marginTop="7dp"
+                    android:background="@color/colorGray" />
 
                 <TextView
                     android:id="@+id/sub_total"
-                    android:layout_marginTop="7dp"
-                    android:layout_below="@+id/view_divider_checkout"
-                    android:textColor="@color/colorWhite"
                     style="@style/TextRegular"
-                    android:text="SUBTOTAL"/>
+                    android:layout_below="@+id/view_divider_checkout"
+                    android:layout_marginTop="7dp"
+                    android:text="SUBTOTAL"
+                    android:textColor="@color/colorWhite" />
 
                 <TextView
                     android:id="@+id/sub_total_checkout"
-                    android:layout_marginTop="7dp"
-                    android:layout_below="@+id/view_divider_checkout"
-                    android:textColor="@color/colorWhite"
-                    android:layout_alignParentEnd="true"
                     style="@style/TextRegular"
-                    android:text="Rp12.000"/>
+                    android:layout_below="@+id/view_divider_checkout"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="7dp"
+                    android:text="Rp12.000"
+                    android:textColor="@color/colorWhite" />
 
                 <Button
-                    android:layout_marginTop="@dimen/margin_space"
+                    android:id="@+id/next_checkout"
+                    style="@style/ButtonGradient"
                     android:layout_below="@+id/sub_total"
-                    android:text="Lanjutkan"
+                    android:layout_marginTop="@dimen/margin_space"
                     android:background="@drawable/bg_rounded"
+                    android:text="Lanjutkan"
                     android:textColor="@color/colorRed"
-                    style="@style/ButtonGradient"/>
+                    android:visibility="gone" />
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/sh_button_checkout"
+                    style="@style/ButtonGradient"
+                    android:layout_below="@+id/sub_total"
+                    android:layout_marginTop="@dimen/margin_space"
+                    android:background="@drawable/bg_rounded"
+                    android:visibility="visible">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:text="@string/please_wait"
+                            android:textColor="@color/colorRed"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                </com.facebook.shimmer.ShimmerFrameLayout>
 
 
             </RelativeLayout>

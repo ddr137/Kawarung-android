@@ -114,9 +114,21 @@ class HomeFragment : Fragment() {
 
     private fun isLoading(state: Boolean) {
         if (state) {
+            rv_trend_categories.visibility = View.GONE
+            sh_product_trend.visibility = View.VISIBLE
+            sh_product_trend.startShimmerAnimation()
 
+            rv_new_categories.visibility = View.GONE
+            sh_product_new.visibility = View.VISIBLE
+            sh_product_new.startShimmerAnimation()
         } else {
+            rv_trend_categories.visibility = View.VISIBLE
+            sh_product_trend.visibility = View.GONE
+            sh_product_trend.stopShimmerAnimation()
 
+            rv_new_categories.visibility = View.VISIBLE
+            sh_product_new.visibility = View.GONE
+            sh_product_new.stopShimmerAnimation()
         }
     }
 

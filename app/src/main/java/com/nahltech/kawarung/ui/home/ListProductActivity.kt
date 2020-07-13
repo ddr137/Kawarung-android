@@ -1,6 +1,7 @@
 package com.nahltech.kawarung.ui.home
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -60,9 +61,13 @@ class ListProductActivity : AppCompatActivity() {
 
     private fun isLoading(state: Boolean) {
         if (state) {
-
+            rv_trend_categories_more.visibility = View.GONE
+            sh_product_list_trend.visibility = View.VISIBLE
+            sh_product_list_trend.startShimmerAnimation()
         } else {
-
+            rv_trend_categories_more.visibility = View.VISIBLE
+            sh_product_list_trend.visibility = View.GONE
+            sh_product_list_trend.stopShimmerAnimation()
         }
     }
 

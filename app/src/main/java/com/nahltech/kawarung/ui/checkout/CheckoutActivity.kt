@@ -1,20 +1,29 @@
 package com.nahltech.kawarung.ui.checkout
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.nahltech.kawarung.R
+import com.nahltech.kawarung.adapters.CheckoutProductAdapter
 import com.nahltech.kawarung.data.network.ApiClient
+import com.nahltech.kawarung.utils.Constants
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_checkout.*
+import java.text.DecimalFormat
+import java.util.*
 
 class CheckoutActivity : AppCompatActivity() {
 
+    private lateinit var checkoutViewModel: CheckoutViewModel
     private var disposable: Disposable? = null
     private var api = ApiClient.instance()
 
@@ -35,6 +44,8 @@ class CheckoutActivity : AppCompatActivity() {
     var idDistrict: String = ""
     var idVillage: String = ""
 
+    var paymentMethod: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_checkout)
@@ -42,12 +53,56 @@ class CheckoutActivity : AppCompatActivity() {
         getProvince()
         setSpinner()
         fillText()
+        setupViewModel()
+        setupRecycler()
+
+        if (cod_method.isClickable) {
+            paymentMethod = "Cash On Delivery"
+        } else if (bank_method.isClickable) {
+            paymentMethod = "Bank Transfer"
+        }
+    }
+
+    private fun setupViewModel() {
+        checkoutViewModel = ViewModelProvider(this).get(CheckoutViewModel::class.java)
+        doUpdate()
+
+        checkoutViewModel.getState().observe(this, Observer {
+            handleUIState(it)
+        })
+
+        checkoutViewModel.getProductCheckout().observe(this, Observer {
+            rv_checkout.adapter?.let { adapter ->
+                if (adapter is CheckoutProductAdapter) {
+                    adapter.setListProductCheckout(it)
+                }
+            }
+        })
+        checkoutViewModel.getState().observe(this, Observer {
+            handleUIState(it)
+        })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        checkoutViewModel.fetchProductCheckout(Constants.getIdUser(this), Constants.getToken(this))
+    }
+
+    private fun setupRecycler() {
+        rv_checkout.apply {
+            layoutManager = LinearLayoutManager(this@CheckoutActivity)
+            adapter = CheckoutProductAdapter(mutableListOf(), context)
+        }
     }
 
     private fun fillText() {
+        val localeID = Locale("in", "ID")
+        val formatRupiah = DecimalFormat.getCurrencyInstance(localeID)
+
         qty_checkout.text = intent.getStringExtra("qty")
-        price_piece.text = intent.getStringExtra("total_discount")
-        sub_total_checkout.text = intent.getStringExtra("sub_total")
+        price_piece.text = formatRupiah.format(intent.getStringExtra("total_discount").toString().toDouble())
+        sub_total_checkout.text = formatRupiah.format(intent.getStringExtra("sub_total").toString().toDouble())
+
     }
 
     private fun toolbarUI() {
@@ -341,5 +396,73 @@ class CheckoutActivity : AppCompatActivity() {
         spinner_city_address_checkout.isEnabled = !status
         spinner_district_address_checkout.isEnabled = !status
         spinner_village_address_checkout.isEnabled = !status
+    }
+
+    private fun handleUIState(it: CheckoutState) {
+        when (it) {
+            is CheckoutState.IsLoading -> isLoading(it.state)
+            is CheckoutState.Error -> {
+                toast(it.err)
+                isLoading(false)
+            }
+            is CheckoutState.ShowToast -> toast(it.message)
+            is CheckoutState.IsSuccess -> {
+                toast("Berhasil dibuat")
+                startActivity(Intent(this@CheckoutActivity, CheckoutSuccessActivity::class.java))
+            }
+        }
+    }
+
+    private fun toast(message: String?) = Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+
+    private fun isLoading(state: Boolean) {
+        if (state) {
+            next_checkout.isEnabled = false
+            next_checkout.visibility = View.GONE
+            sh_button_checkout.visibility = View.VISIBLE
+            sh_button_checkout.startShimmerAnimation()
+        } else {
+            next_checkout.isEnabled = true
+            next_checkout.visibility = View.VISIBLE
+            sh_button_checkout.visibility = View.GONE
+            sh_button_checkout.stopShimmerAnimation()
+        }
+    }
+
+    private fun doUpdate() {
+        next_checkout.setOnClickListener {
+            //val choosePayment: RadioButton = findViewById(rg_payment_method.checkedRadioButtonId)
+
+            val id = Constants.getIdUser(this).trim()
+            val token = Constants.getToken(this).trim()
+            val provinceId = idProvince.trim()
+            val cityId = idCity.trim()
+            val districtId = idDistrict.trim()
+            val villageId = idVillage.trim()
+            val completeAddress = complete_address_address_checkout.text.toString().trim()
+            val postalCode = postal_code_address_checkout.text.toString().trim()
+            val orderId = intent.getStringExtra("order_id").toString().trim()
+            val note = note_checkout.text.toString().trim()
+
+            val paymentMethod = paymentMethod.trim()
+            val totalDiscount = intent.getStringExtra("total_discount").toString().trim()
+            val subtotal = intent.getStringExtra("sub_total").toString().trim()
+
+            checkoutViewModel.checkoutPurchase(
+                id,
+                token,
+                provinceId,
+                cityId,
+                districtId,
+                villageId,
+                completeAddress,
+                postalCode,
+                orderId,
+                note,
+                paymentMethod,
+                totalDiscount,
+                subtotal
+            )
+        }
     }
 }

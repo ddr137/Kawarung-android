@@ -80,10 +80,6 @@ class ProfileFragment : Fragment() {
             val moveIntent = Intent(context, ChangePasswordActivity::class.java)
             startActivity(moveIntent)
         }
-        bank_account.setOnClickListener {
-            val moveIntent = Intent(context, BankAccountActivity::class.java)
-            startActivity(moveIntent)
-        }
     }
 
     private fun logout() {

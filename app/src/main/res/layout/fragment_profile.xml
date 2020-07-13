@@ -304,19 +304,6 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/bank_account"
-                style="@style/TextRegular"
-                android:layout_width="match_parent"
-                android:layout_marginStart="@dimen/margin_space"
-                android:layout_marginTop="27dp"
-                android:layout_marginEnd="@dimen/margin_space"
-                android:drawableStart="@drawable/ic_edit_grey"
-                android:drawablePadding="@dimen/margin_space"
-                android:text="@string/bank_account"
-                android:textColor="@color/colorGrey"
-                android:textSize="16sp" />
-
-            <TextView
                 android:id="@+id/logout"
                 style="@style/TextRegular"
                 android:layout_width="match_parent"

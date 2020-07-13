@@ -2,6 +2,7 @@ package com.nahltech.kawarung.ui.cart
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -60,9 +61,10 @@ class CartActivity : AppCompatActivity() {
 
         btn_buy_cart.setOnClickListener {
             val moveIntent = Intent(this, CheckoutActivity::class.java).apply {
-                putExtra("qty", formatRupiah.format(data.qty.toString().toDouble()))
-                putExtra("total_discount", formatRupiah.format(data.total_discount.toString().toDouble()))
-                putExtra("sub_total", formatRupiah.format(data.subTotal.toString().toDouble()))
+                putExtra("qty", data.qty.toString())
+                putExtra("total_discount", data.total_discount.toString())
+                putExtra("sub_total", data.subTotal.toString())
+                putExtra("order_id", data.id.toString())
             }
             startActivity(moveIntent)
         }
@@ -78,7 +80,8 @@ class CartActivity : AppCompatActivity() {
         when (it) {
             is CartState.IsLoading -> isLoading(it.state)
             is CartState.Error -> {
-                toast(it.err)
+                state_empty_cart.visibility = View.VISIBLE
+                //toast(it.err)
                 isLoading(false)
             }
             is CartState.IsSuccess -> {
@@ -89,9 +92,15 @@ class CartActivity : AppCompatActivity() {
 
     private fun isLoading(state: Boolean) {
         if (state) {
-
+            rv_cart.visibility = View.GONE
+            rl_cart.visibility = View.GONE
+            sh_cart.visibility = View.VISIBLE
+            sh_cart.startShimmerAnimation()
         } else {
-
+            rv_cart.visibility = View.VISIBLE
+            rl_cart.visibility = View.VISIBLE
+            sh_cart.visibility = View.GONE
+            sh_cart.stopShimmerAnimation()
         }
     }
 

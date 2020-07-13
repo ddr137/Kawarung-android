@@ -49,7 +49,7 @@ interface ApiService {
     @POST("api/users/{id}/change-image")
     fun changeImage(
         //@Header("Authorization") token : String,
-        @Path("id") id : String,
+        @Path("id") id: String,
         @Part image: MultipartBody.Part
     ): Call<WrappedResponse<ResponseImageUploader>>
 
@@ -57,8 +57,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("api/users/{id}")
     fun editAccount(
-        @Header("Authorization") token : String,
-        @Path("id") id : String,
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
         @Field("name") name: String,
         @Field("email") email: String,
         @Field("phone") phone: String
@@ -81,8 +81,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("api/users/{id}/change-address")
     fun editAddress(
-        @Header("Authorization") token : String,
-        @Path("id") id : String,
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
         @Field("province_name") provinceId: String,
         @Field("city_name") cityId: String,
         @Field("districts_name") districtId: String,
@@ -95,8 +95,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("api/users/{id}/change-password")
     fun changePassword(
-        @Header("Authorization") token : String,
-        @Path("id") id : String,
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
         @Field("old_password") oldPassword: String,
         @Field("new_password") newPassword: String,
         @Field("confirm_password") confirmPassword: String
@@ -106,8 +106,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("api/users/{id}/change-bank")
     fun accountBank(
-        @Header("Authorization") token : String,
-        @Path("id") id : String,
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
         @Field("bank_name") bankName: String,
         @Field("account_number") accountNumber: String,
         @Field("owner_name") ownerName: String,
@@ -116,10 +116,10 @@ interface ApiService {
 
     /** Get Product **/
     @GET("api/product/{product_category_name}")
-    fun listProductBestSelling(@Path("product_category_name") programCategoryId : String) : Call<WrappedListResponse<Product>>
+    fun listProductBestSelling(@Path("product_category_name") programCategoryId: String): Call<WrappedListResponse<Product>>
 
     @GET("api/product/new")
-    fun listProductNew() : Call<WrappedListResponse<Product>>
+    fun listProductNew(): Call<WrappedListResponse<Product>>
 
     /** By Category **/
     @FormUrlEncoded
@@ -132,8 +132,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("api/users/{id}/product/buy")
     fun buyProduct(
-        @Path("id") id : String,
-        @Header("Authorization") token : String,
+        @Path("id") id: String,
+        @Header("Authorization") token: String,
         @Field("product_id") productId: String,
         @Field("qty") qty: String
     ): Call<BuyProduct>
@@ -141,30 +141,49 @@ interface ApiService {
     /** Cart **/
     @GET("api/users/{id}/cart")
     fun listCart(
-        @Path("id") id_user : String,
-        @Header("Authorization") token : String
-    ) : Call<Cart>
+        @Path("id") id_user: String,
+        @Header("Authorization") token: String
+    ): Call<Cart>
 
     /** Cart **/
     @GET("api/users/{id}/cart")
     fun subTotalCart(
-        @Path("id") id_user : String,
-        @Header("Authorization") token : String
-    ) : Call<Cart>
+        @Path("id") id_user: String,
+        @Header("Authorization") token: String
+    ): Call<Cart>
 
     /** Delete Product Cart **/
     @FormUrlEncoded
     @POST("api/users/{id}/cart/delete")
     fun deleteProductCart(
-        @Path("id") id : String,
-        @Header("Authorization") token : String,
+        @Path("id") id: String,
+        @Header("Authorization") token: String,
         @Field("order_product_id") orderId: String
     ): Call<Product>
 
     /** Cart **/
     @GET("api/users/{id}/shopping")
     fun historyPurchase(
-        @Path("id") id_user : String,
-        @Header("Authorization") token : String
-    ) : Call<HistoryPurchase>
+        @Path("id") id_user: String,
+        @Header("Authorization") token: String
+    ): Call<HistoryPurchase>
+
+    /** Checkout Purchase **/
+    @FormUrlEncoded
+    @POST("api/users/{user_id}/checkout")
+    fun checkoutPurchase(
+        @Path("user_id") user_id: String,
+        @Header("Authorization") token: String,
+        @Field("province_name") province_name: String,
+        @Field("city_name") city_name: String,
+        @Field("districts_name") districts_name: String,
+        @Field("village_name") village_name: String,
+        @Field("address") address: String,
+        @Field("postal_code") postal_code: String,
+        @Field("order_id") order_id: String,
+        @Field("note") note: String,
+        @Field("payment_method") payment_method: String,
+        @Field("total_discount") total_discount: String,
+        @Field("subtotal") subtotal: String
+    ): Call<Responses>
 }

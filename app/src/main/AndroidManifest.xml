@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.history.DetailHistoryPurchaseActivity"></activity>
         <activity android:name=".ui.search.SearchActivity" />
         <activity android:name=".ui.confirmPayment.ConfirmPaymentActivity" />
         <activity android:name=".ui.history.HistoryStatusActivity" />

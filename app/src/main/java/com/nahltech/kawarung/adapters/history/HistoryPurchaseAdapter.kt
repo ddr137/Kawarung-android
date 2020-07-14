@@ -1,7 +1,9 @@
 package com.nahltech.kawarung.adapters.history
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nahltech.kawarung.R
 import com.nahltech.kawarung.data.models.historyPurchase.Data
+import com.nahltech.kawarung.ui.history.DetailHistoryPurchaseActivity
 import kotlinx.android.synthetic.main.item_list_history_purchase.view.*
 
 class HistoryPurchaseAdapter(
@@ -60,6 +63,12 @@ class HistoryPurchaseAdapter(
             itemView.rv_sub_item.layoutManager = layoutManager
             itemView.rv_sub_item.adapter = subItemAdapter
             itemView.rv_sub_item.setRecycledViewPool(viewPool)
+
+            itemView.detail_history_purchase.setOnClickListener {
+                context.startActivity(Intent(context, DetailHistoryPurchaseActivity::class.java).apply {
+                    (context as Activity).finish()
+                })
+            }
 
         }
     }

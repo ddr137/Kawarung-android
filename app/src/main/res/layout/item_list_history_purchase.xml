@@ -51,6 +51,7 @@
                 tools:text="Status: Menunggu Ongkir Dari Admin" />
 
             <Button
+                android:id="@+id/detail_history_purchase"
                 style="@style/ButtonGradient"
                 android:layout_margin="12dp"
                 android:background="@drawable/btn_gradient_rounded"

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.nahltech.kawarung">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".ui.search.SearchResultActivity"></activity>
+        <activity android:name=".ui.search.SearchActivity" />
+        <activity android:name=".ui.confirmPayment.ConfirmPaymentActivity" />
+        <activity android:name=".ui.history.HistoryStatusActivity" />
+        <activity android:name=".ui.checkout.CheckoutSuccessActivity" />
+        <activity android:name=".ui.checkout.CheckoutActivity" />
+        <activity android:name=".ui.cart.CartActivity" />
+        <activity android:name=".ui.home.DetailProductActivity" />
+        <activity android:name=".ui.profile.BankAccountActivity" />
+        <activity android:name=".ui.profile.ChangePasswordActivity" />
+        <activity android:name=".ui.profile.EditAddressActivity" />
+        <activity android:name=".ui.profile.EditProfileActivity" />
+        <activity android:name=".ui.home.ListProductActivity" />
+        <activity android:name=".auth.RegisterActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".auth.LoginActivity" />
+        <activity
+            android:name=".SplashScreenActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

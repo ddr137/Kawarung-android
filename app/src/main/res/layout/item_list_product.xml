@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="144dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                app:cardCornerRadius="5dp">
+
+                <ImageView
+                    android:id="@+id/image_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/beras" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/name_product"
+                style="@style/TextRegular"
+                android:layout_marginTop="5dp"
+                tools:text="Beras Cianjur Wangi asa sasa" />
+
+            <TextView
+                android:id="@+id/discount_price_product"
+                style="@style/TextRegular"
+                android:layout_marginTop="5dp"
+                android:textSize="11sp"
+                tools:text="Rp12.000" />
+
+            <TextView
+                android:id="@+id/price_product"
+                style="@style/TextSemiBold"
+                android:textColor="@color/colorLightRed"
+                tools:text="Rp12.000 /Item" />
+
+            <TextView
+                android:id="@+id/min_order"
+                style="@style/TextRegular"
+                tools:text="Min. 10 Item" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/label_discount"
+            style="@style/TextMedium"
+            android:layout_width="42.2dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="7dp"
+            android:background="@color/colorYellow"
+            android:textAlignment="center"
+            tools:text="10%" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhiteSmoke"
+    tools:context=".ui.profile.EditAddressActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_edit_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_edit_address"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@color/colorLightRed">
+
+            <TextView
+                style="@style/TextRegular"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/edit_account"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar_edit_address">
+
+        <TextView
+            style="@style/TextTitleSemiBold"
+            android:layout_marginTop="@dimen/margin_space"
+            android:text="@string/province" />
+
+        <Spinner
+            android:id="@+id/spinner_province_address"
+            style="@style/editText"
+            android:layout_marginTop="3dp" />
+
+        <TextView
+            style="@style/TextTitleSemiBold"
+            android:layout_marginTop="@dimen/margin_space"
+            android:text="@string/city" />
+
+        <Spinner
+            android:id="@+id/spinner_city_address"
+            style="@style/editText"
+            android:layout_marginTop="3dp" />
+
+        <TextView
+            style="@style/TextTitleSemiBold"
+            android:layout_marginTop="@dimen/margin_space"
+            android:text="@string/sub_district" />
+
+        <Spinner
+            android:id="@+id/spinner_district_address"
+            style="@style/editText"
+            android:layout_marginTop="3dp" />
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/TextTitleSemiBold"
+            android:layout_marginTop="@dimen/margin_space"
+            android:text="@string/village" />
+
+        <Spinner
+            android:id="@+id/spinner_village_address"
+            style="@style/editText"
+            android:layout_marginTop="3dp" />
+
+        <TextView
+            style="@style/TextTitleSemiBold"
+            android:layout_marginTop="@dimen/margin_space"
+            android:text="@string/full_address" />
+
+        <EditText
+            android:inputType="textPostalAddress"
+            android:id="@+id/complete_address_address"
+            style="@style/editText"
+            android:layout_height="75dp"
+            android:gravity="top"
+            android:paddingTop="5dp"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
+
+        <TextView
+            style="@style/TextTitleSemiBold"
+            android:layout_marginTop="@dimen/margin_space"
+            android:text="@string/postal_code" />
+
+        <EditText
+            android:id="@+id/postal_code_address"
+            style="@style/editText"
+            android:layout_marginBottom="5dp"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            tools:ignore="LabelFor" />
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_margin="@dimen/margin_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/btn_edit_address"
+            style="@style/ButtonGradient"
+            android:layout_width="match_parent"
+            android:text="@string/save"
+            android:visibility="visible" />
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/sh_save_edit_address"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="@string/login"
+            android:visibility="gone">
+
+            <RelativeLayout
+                style="@style/ButtonGradient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:text="@string/please_wait"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhiteSmoke"
+    android:orientation="vertical"
+    tools:context=".ui.confirmPayment.ConfirmPaymentActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_confirm_payment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_confirm_payment"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@color/colorLightRed">
+
+            <TextView
+                style="@style/TextRegular"
+                android:layout_gravity="center_horizontal"
+                android:text="Konfirmasi Pembayaran"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_form"
+        android:layout_below="@+id/appbar_confirm_payment"
+        android:paddingBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TextView
+            style="@style/TextTitleSemiBold"
+            android:layout_marginTop="@dimen/margin_space"
+            android:text="TRANSFER DARI BANK"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar_edit_password" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_bank_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_space"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="@dimen/margin_space"
+            app:hintEnabled="false"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bank_name"
+                style="@style/editText"
+                android:layout_margin="0dp"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            style="@style/TextTitleSemiBold"
+            android:layout_marginTop="@dimen/margin_space"
+            android:text="NO REKENING"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar_edit_password" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_no_bank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_space"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="@dimen/margin_space"
+            app:hintEnabled="false"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordNew"
+                style="@style/editText"
+                android:layout_margin="0dp"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            style="@style/TextTitleSemiBold"
+            android:layout_marginTop="@dimen/margin_space"
+            android:text="ATAS NAMA"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appbar_edit_password" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_name_owner_bank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_space"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="@dimen/margin_space"
+            app:hintEnabled="false"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name_owner_bank"
+                style="@style/editText"
+                android:layout_margin="0dp"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_evidence"
+        android:layout_below="@+id/ll_form"
+        style="@style/TextTitleSemiBold"
+        android:layout_marginTop="@dimen/margin_space"
+        android:text="UPLOAD BUKTI TRANSFER"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <RelativeLayout
+        android:layout_below="@+id/tv_evidence"
+        android:layout_marginStart="@dimen/margin_space"
+        android:layout_marginEnd="@dimen/margin_space"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:background="#bcbcbc"
+            android:layout_width="match_parent"
+            android:layout_height="155dp"/>
+
+        <ImageButton
+            android:padding="5dp"
+            android:background="@drawable/badge_grey"
+            android:src="@drawable/ic_camera_grey"
+            android:tint="@color/colorWhite"
+            android:layout_centerInParent="true"
+            android:layout_width="34dp"
+            android:layout_height="34dp"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:text="Kirim"
+        android:layout_marginBottom="@dimen/margin_space"
+        android:layout_marginStart="@dimen/margin_space"
+        android:layout_marginEnd="@dimen/margin_space"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/btn_gradient_rounded"
+        style="@style/ButtonGradient"/>
+
+</RelativeLayout>

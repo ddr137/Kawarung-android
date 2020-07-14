@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:layout_height="wrap_content"
+    android:background="#f6f6f6"
+    android:padding="@dimen/margin_space"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/TextRegular"
+        android:text="Masukkan Jumlah"
+        android:textSize="20sp" />
+
+    <TextView
+        style="@style/TextSemiBold"
+        android:layout_marginTop="17dp"
+        android:text="JUMLAH QTY" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_input_qty_buy_product"
+            android:layout_width="match_parent"
+            app:hintEnabled="false"
+            android:layout_height="35dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_qty_popup"
+                android:inputType="number"
+                style="@style/editText"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="0dp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:padding="8dp"
+            android:id="@+id/unit_popup"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:background="@color/colorGray"
+            android:text="/ Item"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/add_to_cart"
+        android:layout_marginTop="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/ButtonGradient"
+        android:text="Masukkan Ke Keranjang"/>
+
+</LinearLayout>

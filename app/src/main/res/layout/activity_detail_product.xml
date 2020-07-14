@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.DetailProductActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_detail_product"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorLightRed"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_detail_product"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:popupTheme="@style/AppTheme">
+
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorWhite"
+                android:text="@string/detail_product"
+                android:id="@+id/toolbar_title_list_donation"
+                style="@style/TextRegular"
+                android:textSize="20sp" />
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+    <ScrollView
+        android:layout_above="@+id/bottom_linear"
+        android:layout_below="@+id/appbar_detail_product"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp">
+
+                </androidx.viewpager2.widget.ViewPager2>
+
+                <LinearLayout
+                    android:id="@+id/lay_indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="end"
+                    android:orientation="horizontal"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="20dp"
+                    tools:ignore="RtlSymmetry">
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/category_product_detail"
+                android:layout_marginTop="10dp"
+                style="@style/TextRegular"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textColor="@color/colorWhite"
+                android:background="@color/colorLightRed"
+                android:text="SEMBAKO"/>
+
+            <TextView
+                android:id="@+id/name_product_detail"
+                android:textSize="19sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="@dimen/margin_space"
+                android:layout_marginStart="@dimen/margin_space"
+                style="@style/TextMedium"
+                android:lineSpacingExtra="2sp"
+                tools:text="Beras Cianjur Wangi asa sasa assa assa sasa sasa assa sa sa sa sa as…"/>
+
+            <LinearLayout
+                android:layout_marginStart="@dimen/margin_space"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/discount_price_strike_detail"
+                    android:textColor="@color/colorGrey"
+                    android:layout_marginTop="10dp"
+                    tools:text="Rp10.000"
+                    style="@style/TextMedium"/>
+
+                <TextView
+                    android:id="@+id/discount_product_detail"
+                    android:textSize="10sp"
+                    android:background="@color/colorYellow"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    tools:text="10%"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    style="@style/TextMedium"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/price_product_detail"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginStart="@dimen/margin_space"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textColor="#fb6679"
+                    tools:text="Rp20.000"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/min_buy_product_detail"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="@dimen/margin_space"
+                style="@style/TextRegular"
+                tools:text="Minimal Beli 5 Item"
+                />
+
+            <View
+                android:layout_marginTop="16dp"
+                android:background="@color/colorSemiGrey"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"/>
+
+            <TextView
+                android:textColor="@color/colorGrey"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="@dimen/margin_space"
+                style="@style/TextSemiBold"
+                android:text="INFORMASI PRODUK"/>
+
+            <RelativeLayout
+                android:paddingEnd="@dimen/margin_space"
+                android:paddingStart="@dimen/margin_space"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_stock"
+                    android:layout_marginTop="10dp"
+                    style="@style/TextRegular"
+                    android:text="Stok"/>
+
+                <TextView
+                    android:id="@+id/stock_product_detail"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    style="@style/TextSemiBold"
+                    tools:text="20 Item"/>
+
+                <TextView
+                    android:id="@+id/view_stock"
+                    android:layout_below="@+id/tv_stock"
+                    android:layout_marginTop="10dp"
+                    style="@style/TextRegular"
+                    android:text="Dilihat"/>
+
+                <TextView
+                    android:id="@+id/viewer_product_detail"
+                    android:layout_below="@+id/tv_stock"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    style="@style/TextSemiBold"
+                    tools:text="10x"/>
+
+                <TextView
+                    android:id="@+id/tv_created"
+                    android:layout_below="@+id/view_stock"
+                    android:layout_marginTop="10dp"
+                    style="@style/TextRegular"
+                    android:text="Dibuat"/>
+
+                <TextView
+                    android:id="@+id/create_product_detail"
+                    android:layout_below="@+id/view_stock"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    style="@style/TextSemiBold"
+                    tools:text="13 Mei 2020"/>
+
+                <TextView
+                    android:id="@+id/tv_update"
+                    android:layout_below="@+id/tv_created"
+                    android:layout_marginTop="10dp"
+                    style="@style/TextRegular"
+                    android:text="Diperbaharui"/>
+
+                <TextView
+                    android:id="@+id/update_product_detail"
+                    android:layout_below="@+id/tv_created"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="10dp"
+                    style="@style/TextSemiBold"
+                    android:text="13 Mei 2020"/>
+
+            </RelativeLayout>
+
+            <View
+                android:layout_marginTop="16dp"
+                android:background="@color/colorSemiGrey"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"/>
+
+            <TextView
+                android:textColor="@color/colorGrey"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="@dimen/margin_space"
+                style="@style/TextSemiBold"
+                android:text="DESKRIPSI PRODUK"/>
+
+            <com.ms.square.android.expandabletextview.ExpandableTextView
+                xmlns:expandableTextView="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/expand_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                expandableTextView:animDuration="200"
+                expandableTextView:maxCollapsedLines="3">
+
+                <TextView
+                    android:id="@id/expandable_text"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="@dimen/margin_space"
+                    android:layout_marginEnd="@dimen/margin_space"
+                    tools:text="Kamu juga bisa transfer ke rekening BelanjaQu dari bank manapun, hanya biasanya ada tambahan biaya admin jika kamu transfer menggunakan selain bank BCA, Mandiri, dan BRI"
+                    style="@style/TextRegular"/>
+
+                <ImageButton
+                    android:id="@id/expand_collapse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/transparent" />
+            </com.ms.square.android.expandabletextview.ExpandableTextView>
+
+            <View
+                android:layout_marginTop="16dp"
+                android:background="@color/colorSemiGrey"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"/>
+
+            <RelativeLayout
+                android:layout_marginBottom="35dp"
+                android:background="@drawable/bg_rounded"
+                android:backgroundTint="@color/colorRed"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="@dimen/margin_space"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="@dimen/margin_space">
+
+
+                <ImageView
+                    android:tint="@color/colorWhite"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_share" />
+
+                <TextView
+                    android:gravity="center"
+                    style="@style/TextTitleSemiBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Bagikan Produk"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:id="@+id/bottom_linear"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <View
+            android:layout_marginBottom="15dp"
+            android:background="@color/colorSemiGrey"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"/>
+
+        <Button
+            android:id="@+id/btn_but_product_detail"
+            android:layout_marginStart="@dimen/margin_space"
+            android:layout_marginEnd="@dimen/margin_space"
+            android:text="Beli"
+            style="@style/ButtonGradient"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

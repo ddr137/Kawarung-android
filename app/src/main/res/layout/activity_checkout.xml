@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.checkout.CheckoutActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_checkout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_checkout"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@color/colorLightRed">
+
+            <TextView
+                style="@style/TextRegular"
+                android:layout_gravity="center_horizontal"
+                android:text="Checkout"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appbar_checkout"
+        android:background="@color/alabaster">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@color/colorWhite"
+                android:elevation="10dp"
+                android:orientation="vertical"
+                android:padding="@dimen/margin_space"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    style="@style/TextMedium"
+                    android:text="Alamat Pembeli / Pengiriman"
+                    android:textSize="16sp" />
+
+                <TextView
+                    style="@style/TextTitleSemiBold"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="0dp"
+                    android:text="@string/province" />
+
+                <Spinner
+                    android:id="@+id/spinner_province_address_checkout"
+                    style="@style/editText"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="0dp" />
+
+                <TextView
+                    style="@style/TextTitleSemiBold"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="@dimen/margin_space"
+                    android:layout_marginEnd="0dp"
+                    android:text="@string/city" />
+
+                <Spinner
+                    android:id="@+id/spinner_city_address_checkout"
+                    style="@style/editText"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="0dp" />
+
+                <TextView
+                    style="@style/TextTitleSemiBold"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="@dimen/margin_space"
+                    android:layout_marginEnd="0dp"
+                    android:text="@string/sub_district" />
+
+                <Spinner
+                    android:id="@+id/spinner_district_address_checkout"
+                    style="@style/editText"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="0dp" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    style="@style/TextTitleSemiBold"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="@dimen/margin_space"
+                    android:layout_marginEnd="0dp"
+                    android:text="@string/village" />
+
+                <Spinner
+                    android:id="@+id/spinner_village_address_checkout"
+                    style="@style/editText"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginEnd="0dp" />
+
+                <TextView
+                    style="@style/TextTitleSemiBold"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="@dimen/margin_space"
+                    android:layout_marginEnd="0dp"
+                    android:text="@string/full_address" />
+
+                <EditText
+                    android:id="@+id/complete_address_address_checkout"
+                    style="@style/editText"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:gravity="top"
+                    android:importantForAutofill="no"
+                    android:inputType="textPostalAddress"
+                    android:paddingTop="5dp"
+                    tools:ignore="LabelFor" />
+
+                <TextView
+                    style="@style/TextTitleSemiBold"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="@dimen/margin_space"
+                    android:layout_marginEnd="0dp"
+                    android:text="@string/postal_code" />
+
+                <EditText
+                    android:id="@+id/postal_code_address_checkout"
+                    style="@style/editText"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="0dp"
+                    android:layout_marginBottom="5dp"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    tools:ignore="LabelFor" />
+
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/TextSemiBold"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="TAMBAHKAN CATATAN (BOLEH KOSONG)" />
+
+            <EditText
+                android:paddingTop="5dp"
+                android:gravity="top"
+                android:id="@+id/note_checkout"
+                style="@style/editText"
+                android:layout_width="match_parent"
+                android:layout_height="75dp" />
+
+            <TextView
+                style="@style/TextSemiBold"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="@dimen/margin_space"
+                android:text="METODE PEMBAYARAN" />
+
+            <RadioGroup
+                android:id="@+id/rg_payment_method"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_space"
+                android:layout_marginEnd="@dimen/margin_space">
+
+                <RadioButton
+                    android:id="@+id/cod_method"
+                    style="@style/TextRegular"
+                    android:text="COD / Bayar Ditempat" />
+
+                <RadioButton
+                    android:id="@+id/bank_method"
+                    style="@style/TextRegular"
+                    android:text="Bank Transfer" />
+
+            </RadioGroup>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="17dp"
+                android:background="@color/colorGray" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_checkout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_space"
+                app:fastScrollEnabled="false" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_space"
+                android:background="@drawable/bg_checkout"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/tv_total_qty"
+                    style="@style/TextRegular"
+                    android:text="Jumlah / QTY"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/tv_discount_price"
+                    style="@style/TextRegular"
+                    android:layout_below="@+id/tv_total_qty"
+                    android:layout_marginTop="5dp"
+                    android:text="Diskon / Potongan\nHarga"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/qty_checkout"
+                    style="@style/TextRegular"
+                    android:layout_alignParentEnd="true"
+                    android:text="1"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/price_piece"
+                    style="@style/TextRegular"
+                    android:layout_below="@+id/tv_total_qty"
+                    android:layout_alignParentEnd="true"
+                    android:text="Rp0"
+                    android:textColor="@color/colorWhite" />
+
+                <View
+                    android:id="@+id/view_divider_checkout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@+id/tv_discount_price"
+                    android:layout_marginTop="7dp"
+                    android:background="@color/colorGray" />
+
+                <TextView
+                    android:id="@+id/sub_total"
+                    style="@style/TextRegular"
+                    android:layout_below="@+id/view_divider_checkout"
+                    android:layout_marginTop="7dp"
+                    android:text="SUBTOTAL"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/sub_total_checkout"
+                    style="@style/TextRegular"
+                    android:layout_below="@+id/view_divider_checkout"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="7dp"
+                    android:text="Rp12.000"
+                    android:textColor="@color/colorWhite" />
+
+                <Button
+                    android:id="@+id/next_checkout"
+                    style="@style/ButtonGradient"
+                    android:layout_below="@+id/sub_total"
+                    android:layout_marginTop="@dimen/margin_space"
+                    android:background="@drawable/bg_rounded"
+                    android:text="Lanjutkan"
+                    android:textColor="@color/colorRed"
+                    android:visibility="gone" />
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/sh_button_checkout"
+                    style="@style/ButtonGradient"
+                    android:layout_below="@+id/sub_total"
+                    android:layout_marginTop="@dimen/margin_space"
+                    android:background="@drawable/bg_rounded"
+                    android:visibility="visible">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_centerHorizontal="true"
+                            android:fontFamily="@font/poppins_semi_bold"
+                            android:text="@string/please_wait"
+                            android:textColor="@color/colorRed"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
+
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -57,9 +57,9 @@ class CheckoutActivity : AppCompatActivity() {
         setupRecycler()
 
         if (cod_method.isClickable) {
-            paymentMethod = "Cash On Delivery"
+            paymentMethod = "cod"
         } else if (bank_method.isClickable) {
-            paymentMethod = "Bank Transfer"
+            paymentMethod = "bank_transfer"
         }
     }
 

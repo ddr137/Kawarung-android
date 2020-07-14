@@ -1,7 +1,6 @@
 package com.nahltech.kawarung.adapters.history
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -65,9 +64,7 @@ class HistoryPurchaseAdapter(
             itemView.rv_sub_item.setRecycledViewPool(viewPool)
 
             itemView.detail_history_purchase.setOnClickListener {
-                context.startActivity(Intent(context, DetailHistoryPurchaseActivity::class.java).apply {
-                    (context as Activity).finish()
-                })
+                context.startActivity(Intent(context, DetailHistoryPurchaseActivity::class.java))
             }
 
         }

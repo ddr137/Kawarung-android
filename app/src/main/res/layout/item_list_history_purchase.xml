@@ -4,22 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_marginTop="@dimen/margin_space"
-    android:layout_marginEnd="@dimen/margin_space"
-    android:layout_marginStart="@dimen/margin_space"
     android:layout_height="wrap_content">
 
     <TextView
+        android:layout_marginEnd="@dimen/margin_space"
         android:id="@+id/date_invoice"
         style="@style/TextRegular"
         android:layout_alignParentEnd="true"
         tools:text="15:05, 09 Juni 2020" />
 
     <androidx.cardview.widget.CardView
+        android:layout_marginEnd="@dimen/margin_space"
+        android:layout_marginStart="@dimen/margin_space"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/date_invoice"
         app:cardCornerRadius="3dp"
-        app:cardElevation="@dimen/margin_space">
+        app:cardElevation="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"

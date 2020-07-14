@@ -1,4 +1,4 @@
-package com.nahltech.kawarung.data.models.historyPurchase
+package com.nahltech.kawarung.data.models.history
 
 import com.google.gson.annotations.SerializedName
 

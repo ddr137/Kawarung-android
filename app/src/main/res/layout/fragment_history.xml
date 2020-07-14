@@ -1,19 +1,268 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="80dp"
     tools:context=".ui.history.HistoryFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tv_account"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorLightRed"
+        app:contentInsetStart="0dp">
+
+        <TextView
+            style="@style/TextRegular"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="Riwayat Pembelian"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
+
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
         android:id="@+id/rv_history_purchase"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:listitem="@layout/item_list_history_purchase"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+   <com.facebook.shimmer.ShimmerFrameLayout
+       android:id="@+id/sh_history_purchase"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_marginTop="@dimen/margin_space"
+               android:layout_marginEnd="@dimen/margin_space"
+               android:layout_marginStart="@dimen/margin_space"
+               android:layout_height="wrap_content">
+
+               <View
+                   android:id="@+id/date_invoice"
+                   style="@style/TextRegular"
+                   android:layout_height="15dp"
+                   android:layout_width="100dp"
+                   android:background="@color/colorGray"
+                   android:layout_alignParentEnd="true"
+                   tools:text="15:05, 09 Juni 2020" />
+
+               <androidx.cardview.widget.CardView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@+id/date_invoice"
+                   app:cardCornerRadius="3dp"
+                   app:cardElevation="@dimen/margin_space">
+
+                   <LinearLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:orientation="vertical">
+
+                       <View
+                           style="@style/TextRegular"
+                           android:layout_height="15dp"
+                           android:layout_width="100dp"
+                           android:background="@color/colorGray"
+                           android:layout_alignParentEnd="true"
+                           tools:text="15:05, 09 Juni 2020" />
+
+                       <LinearLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:orientation="vertical">
+
+                           <RelativeLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:paddingTop="15dp">
+
+                               <View
+                                   android:id="@+id/view_img_cart"
+                                   android:layout_width="80dp"
+                                   android:layout_height="80dp"
+                                   android:layout_marginStart="15dp"
+                                   android:layout_marginEnd="8dp"
+                                   android:background="@color/colorGray"
+                                   android:scaleType="centerCrop"
+                                   tools:src="@drawable/beras" />
+
+                               <View
+                                   android:id="@+id/view_label_discount_cart"
+                                   style="@style/TextMedium"
+                                   android:layout_width="30dp"
+                                   android:layout_height="17dp"
+                                   android:layout_marginStart="15dp"
+                                   android:background="@color/colorGray"
+                                   android:textAlignment="center"
+                                   tools:text="10%" />
+
+                               <View
+                                   android:id="@+id/view_title_product_cart"
+                                   style="@style/TextRegular"
+                                   android:layout_width="230dp"
+                                   android:layout_height="15dp"
+                                   android:layout_marginEnd="15dp"
+                                   android:layout_toEndOf="@+id/view_img_cart"
+                                   android:background="@color/colorGray"
+                                   tools:text="Beras Cianjur assa sasa sasa sa sa sasedfdsfsdfsdfa" />
+
+                               <View
+                                   android:id="@+id/view_price_strikeThrough"
+                                   style="@style/TextRegular"
+                                   android:layout_width="130dp"
+                                   android:layout_height="15dp"
+                                   android:layout_below="@+id/view_title_product_cart"
+                                   android:layout_marginTop="3dp"
+                                   android:layout_marginEnd="5dp"
+                                   android:layout_toEndOf="@+id/view_img_cart"
+                                   android:background="@color/colorGray"
+                                   android:textSize="11sp"
+                                   tools:text="Rp10.000" />
+
+                               <View
+                                   android:id="@+id/view_total_qty_cart"
+                                   style="@style/TextRegular"
+                                   android:layout_width="100dp"
+                                   android:layout_height="15dp"
+                                   android:layout_below="@+id/view_price_strikeThrough"
+                                   android:layout_marginTop="5dp"
+                                   android:layout_toEndOf="@+id/view_img_cart"
+                                   android:background="@color/colorGray"
+                                   tools:text="Jumlah: 1 Kg" />
+
+                               <View
+                                   android:layout_width="match_parent"
+                                   android:layout_height="0.5dp"
+                                   android:layout_below="@+id/view_total_qty_cart"
+                                   android:layout_marginTop="40dp"
+                                   android:background="@color/colorGray" />
+
+                           </RelativeLayout>
+
+                           <RelativeLayout
+                               android:layout_width="match_parent"
+                               android:layout_height="wrap_content"
+                               android:paddingTop="15dp">
+
+                               <View
+                                   android:id="@+id/view1_img_cart"
+                                   android:layout_width="80dp"
+                                   android:layout_height="80dp"
+                                   android:layout_marginStart="15dp"
+                                   android:layout_marginEnd="8dp"
+                                   android:background="@color/colorGray"
+                                   android:scaleType="centerCrop"
+                                   tools:src="@drawable/beras" />
+
+                               <View
+                                   android:id="@+id/view1_label_discount_cart"
+                                   style="@style/TextMedium"
+                                   android:layout_width="30dp"
+                                   android:layout_height="17dp"
+                                   android:layout_marginStart="15dp"
+                                   android:background="@color/colorGray"
+                                   android:textAlignment="center"
+                                   tools:text="10%" />
+
+                               <View
+                                   android:id="@+id/view1_title_product_cart"
+                                   style="@style/TextRegular"
+                                   android:layout_width="230dp"
+                                   android:layout_height="15dp"
+                                   android:layout_marginEnd="15dp"
+                                   android:layout_toEndOf="@+id/view1_img_cart"
+                                   android:background="@color/colorGray"
+                                   tools:text="Beras Cianjur assa sasa sasa sa sa sasedfdsfsdfsdfa" />
+
+                               <View
+                                   android:id="@+id/view1_price_strikeThrough"
+                                   style="@style/TextRegular"
+                                   android:layout_width="130dp"
+                                   android:layout_height="15dp"
+                                   android:layout_below="@+id/view1_title_product_cart"
+                                   android:layout_marginTop="3dp"
+                                   android:layout_marginEnd="5dp"
+                                   android:layout_toEndOf="@+id/view1_img_cart"
+                                   android:background="@color/colorGray"
+                                   android:textSize="11sp"
+                                   tools:text="Rp10.000" />
+
+                               <View
+                                   android:id="@+id/view1_total_qty_cart"
+                                   style="@style/TextRegular"
+                                   android:layout_width="100dp"
+                                   android:layout_height="15dp"
+                                   android:layout_below="@+id/view1_price_strikeThrough"
+                                   android:layout_marginTop="5dp"
+                                   android:layout_toEndOf="@+id/view1_img_cart"
+                                   android:background="@color/colorGray"
+                                   tools:text="Jumlah: 1 Kg" />
+
+                               <View
+                                   android:layout_width="match_parent"
+                                   android:layout_height="0.5dp"
+                                   android:layout_below="@+id/view1_total_qty_cart"
+                                   android:layout_marginTop="40dp"
+                                   android:background="@color/colorGray" />
+
+                           </RelativeLayout>
+
+                       </LinearLayout>
+
+                       <View
+                           style="@style/TextRegular"
+                           android:layout_height="15dp"
+                           android:layout_width="300dp"
+                           android:background="@color/colorGray"
+                           android:layout_alignParentEnd="true"
+                           tools:text="15:05, 09 Juni 2020" />
+
+                       <RelativeLayout
+                           android:layout_marginTop="10dp"
+                           android:backgroundTint="@color/colorGray"
+                           android:background="@drawable/bg_rounded"
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content">
+
+                           <View
+                               android:layout_width="match_parent"
+                               android:layout_height="45dp" />
+
+                           <TextView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_centerInParent="true"
+                               android:layout_centerHorizontal="true"
+                               android:fontFamily="@font/poppins_semi_bold"
+                               android:textColor="@color/colorWhite"
+                               android:textSize="14sp" />
+                       </RelativeLayout>
+
+                   </LinearLayout>
+
+
+               </androidx.cardview.widget.CardView>
+
+           </RelativeLayout>
+
+       </LinearLayout>
+
+   </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+</LinearLayout>

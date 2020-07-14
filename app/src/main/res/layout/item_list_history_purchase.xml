@@ -3,19 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/margin_space"
+    android:layout_marginEnd="@dimen/margin_space"
+    android:layout_marginStart="@dimen/margin_space"
     android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/date_invoice"
         style="@style/TextRegular"
         android:layout_alignParentEnd="true"
-        android:text="15:05, 09 Juni 2020" />
+        tools:text="15:05, 09 Juni 2020" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/date_invoice"
-        app:cardCornerRadius="1dp"
+        app:cardCornerRadius="3dp"
         app:cardElevation="@dimen/margin_space">
 
         <LinearLayout
@@ -29,20 +32,21 @@
                 android:layout_width="match_parent"
                 android:background="@color/colorWhiteSmoke"
                 android:padding="10dp"
-                android:text="Invoice: INV000053" />
+                tools:text="Invoice: INV000053" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_sub_item"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                tools:listitem="@layout/item_list_cart" />
+                android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/status_history"
                 style="@style/TextRegular"
                 android:layout_width="match_parent"
                 android:layout_marginTop="10dp"
                 android:background="@color/colorWhiteSmoke"
                 android:padding="10dp"
-                android:text="Status: Menunggu Ongkir Dari Admin" />
+                tools:text="Status: Menunggu Ongkir Dari Admin" />
 
             <Button
                 style="@style/ButtonGradient"

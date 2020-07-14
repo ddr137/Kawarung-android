@@ -48,19 +48,22 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupViewModel()
         logout()
         click()
         if (context?.let { Constants.getToken(it) } == "undefined"
             && context?.let { Constants.getIdUser(it) } == "undefined"
-        ) startActivity(Intent(context, LoginActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
-        })
+        ) {
+            startActivity(Intent(context, LoginActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            })
+        } else {
+            setupViewModel()
+        }
     }
 
     @SuppressLint("SetTextI18n")
-    private fun click(){
+    private fun click() {
         btn_change_image_profile.setOnClickListener {
             EasyImage.openChooserWithGallery(
                 this@ProfileFragment,

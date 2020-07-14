@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nahltech.kawarung.R
-import com.nahltech.kawarung.adapters.HistoryPurchaseAdapter
+import com.nahltech.kawarung.adapters.history.HistoryPurchaseAdapter
 import com.nahltech.kawarung.utils.Constants
 import kotlinx.android.synthetic.main.fragment_history.*
 
@@ -28,7 +28,6 @@ class HistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //toolbarUI()
         setupRecycler()
         setupViewModel()
     }
@@ -61,16 +60,20 @@ class HistoryFragment : Fragment() {
                 isLoading(false)
             }
             is HistoryState.IsSuccess -> {
-                toast(it.what.toString())
+                //toast(it.what.toString())
             }
         }
     }
 
     private fun isLoading(state: Boolean) {
         if (state) {
-
+            rv_history_purchase.visibility = View.GONE
+            sh_history_purchase.visibility = View.VISIBLE
+            sh_history_purchase.startShimmerAnimation()
         } else {
-
+            rv_history_purchase.visibility = View.VISIBLE
+            sh_history_purchase.visibility = View.GONE
+            sh_history_purchase.stopShimmerAnimation()
         }
     }
 
@@ -79,7 +82,11 @@ class HistoryFragment : Fragment() {
     private fun setupRecycler() {
         rv_history_purchase.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = HistoryPurchaseAdapter(mutableListOf(), context)
+            adapter =
+                HistoryPurchaseAdapter(
+                    mutableListOf(),
+                    context
+                )
         }
     }
 

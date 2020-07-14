@@ -136,7 +136,7 @@ class EditAddressActivity : AppCompatActivity() {
                     id: Long
                 ) {
                     if (provincesId.count() > 0 && position > 0) {
-                        idProvince = provinces[position]
+                        idProvince = provincesId[position].toString()
                         getCity(provincesId[position]).toString()
                     }
                 }
@@ -200,7 +200,7 @@ class EditAddressActivity : AppCompatActivity() {
                 id: Long
             ) {
                 if (citiesId.count() > 0 && position > 0) {
-                    idCity = cities[position]
+                    idCity = citiesId[position].toString()
                     getDistrict(citiesId[position]).toString()
                 }
             }
@@ -265,7 +265,7 @@ class EditAddressActivity : AppCompatActivity() {
                     id: Long
                 ) {
                     if (districtsId.count() > 0 && position > 0) {
-                        idDistrict = districts[position]
+                        idDistrict = districtsId[position].toString()
                         getVillage(districtsId[position]).toString()
                     }
                 }
@@ -327,7 +327,7 @@ class EditAddressActivity : AppCompatActivity() {
                     id: Long
                 ) {
                     if (villagesId.count() > 0 && position > 0) {
-                        idVillage = villages[position]
+                        idVillage = villagesId[position].toString()
                         villagesId[position].toString()
                     }
                 }

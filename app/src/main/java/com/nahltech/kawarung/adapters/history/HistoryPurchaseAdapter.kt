@@ -64,7 +64,9 @@ class HistoryPurchaseAdapter(
             itemView.rv_sub_item.setRecycledViewPool(viewPool)
 
             itemView.detail_history_purchase.setOnClickListener {
-                context.startActivity(Intent(context, DetailHistoryPurchaseActivity::class.java))
+                context.startActivity(Intent(context, DetailHistoryPurchaseActivity::class.java).apply {
+                    putExtra("id_purchase", history.id)
+                })
             }
 
         }

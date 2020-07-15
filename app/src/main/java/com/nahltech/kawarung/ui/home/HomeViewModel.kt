@@ -74,8 +74,8 @@ class HomeViewModel: ViewModel() {
             ) {
                 if (response.isSuccessful) {
                     val body = response.body() as BuyProduct
-                    if (body.status == 1) {
-                        state.value = HomeState.IsSuccess(1)
+                    if (response.code() == 201) {
+                        state.value = HomeState.IsSuccess(201)
                     } else {
                         state.value = HomeState.Error("ada kesalahan")
                     }

@@ -407,8 +407,9 @@ class CheckoutActivity : AppCompatActivity() {
             }
             is CheckoutState.ShowToast -> toast(it.message)
             is CheckoutState.IsSuccess -> {
-                toast("Berhasil dibuat")
+                toast("Berhasil...")
                 startActivity(Intent(this@CheckoutActivity, CheckoutSuccessActivity::class.java))
+                finish()
             }
         }
     }

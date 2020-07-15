@@ -87,6 +87,9 @@ class CartActivity : AppCompatActivity() {
             is CartState.IsSuccess -> {
                 //toast()
             }
+            is CartState.IsEmpty -> {
+                state_empty_cart.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -112,4 +115,5 @@ class CartActivity : AppCompatActivity() {
             adapter = CartProductAdapter(mutableListOf(), context)
         }
     }
+
 }

@@ -58,14 +58,14 @@ class CheckoutViewModel : ViewModel() {
                 ) {
                     if (response.isSuccessful) {
                         val body = response.body() as Responses
-                        if (body.code == 201) {
+                        if (response.code() == 201) {
                             state.value = CheckoutState.IsSuccess(201)
                         } else {
-                            state.value = CheckoutState.Error("Gagal saat mengupdate akun. :(")
+                            state.value = CheckoutState.Error("Coba lagi beberapa saat. :(")
 
                         }
                     } else {
-                        state.value = CheckoutState.Error("Kesalahan saat mengupdate akun")
+                        state.value = CheckoutState.Error("Kesalahan ")
                     }
                     state.value = CheckoutState.IsLoading(false)
                 }

@@ -34,11 +34,19 @@ class CartViewModel : ViewModel() {
                 response: Response<Cart>
             ) {
                 if (response.isSuccessful) {
-                    val body = response.body() as Cart
-                    if (response.code() == 200) {
-                        val r = body.data.orderProducts.data
-                        productCart.postValue(r)
-                        state.value = CartState.IsSuccess(200)
+                    when {
+                        response.code() ==  200 -> {
+                            val body = response.body() as Cart
+                            val r = body.data.orderProducts.data
+                            productCart.postValue(r)
+                            state.value = CartState.IsSuccess(200)
+                        }
+                        response.code() ==  204 -> {
+                            state.value = CartState.IsEmpty(204)
+                        }
+                        else -> {
+                            state.value = CartState.Failed("gagal")
+                        }
                     }
                 } else {
                     state.value = CartState.Error("Terjadi kesalahan. Gagal mendapatkan response")
@@ -61,10 +69,19 @@ class CartViewModel : ViewModel() {
                 response: Response<Cart>
             ) {
                 if (response.isSuccessful) {
-                    val body = response.body() as Cart
-                    if (response.code() == 200) {
-                        val r = body.data
-                        subTotal.postValue(r)
+
+                    when {
+                        response.code() == 200 -> {
+                            val body = response.body() as Cart
+                            val r = body.data
+                            subTotal.postValue(r)
+                        }
+                        response.code() ==  204 -> {
+                            state.value = CartState.IsEmpty(204)
+                        }
+                        else -> {
+                            state.value = CartState.Failed("gagal")
+                        }
                     }
                 } else {
                     state.value = CartState.Failed("Gagal mendapatkan response dari server")
@@ -91,10 +108,10 @@ class CartViewModel : ViewModel() {
                     if (body.status.equals("1")) {
                         state.value = CartState.IsSuccess(1)
                     } else {
-                        state.value = CartState.Failed("Login gagal")
+                        state.value = CartState.Failed("gagal")
                     }
                 } else {
-                    state.value = CartState.Error("Email atau Password salah")
+                    state.value = CartState.Error("error")
                 }
                 state.value = CartState.IsLoading(false)
             }
@@ -113,4 +130,5 @@ sealed class CartState {
     data class Error(var err: String?) : CartState()
     data class Failed(var message: String) : CartState()
     data class IsSuccess(var what: Int? = null) : CartState()
+    data class IsEmpty(var data: Int? = null) : CartState()
 }

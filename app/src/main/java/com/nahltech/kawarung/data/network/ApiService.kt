@@ -8,6 +8,7 @@ import com.nahltech.kawarung.data.models.address.Village
 import com.nahltech.kawarung.data.models.best_selling.Product
 import com.nahltech.kawarung.data.models.cart.Cart
 import com.nahltech.kawarung.data.models.historyPurchase.HistoryPurchase
+import com.nahltech.kawarung.data.models.historyPurchase.detailHistoryPurchase.DetailHistoryPurchase
 import com.nahltech.kawarung.utils.WrappedListResponse
 import com.nahltech.kawarung.utils.WrappedResponse
 import io.reactivex.Observable
@@ -193,4 +194,12 @@ interface ApiService {
     fun searchProduct(
         @Field("term") term: String
     ): Call<WrappedListResponse<Product>>
+
+    /** Detail History Purchase **/
+    @GET("api/users/{user_id}/shopping/{id_purchase}")
+    fun detailHistoryPurchase(
+        @Header("Authorization") token: String,
+        @Path("user_id") user_id: String,
+        @Path("id_purchase") id_purchase: String
+    ): Call<DetailHistoryPurchase>
 }

@@ -35,4 +35,347 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextRegular"
+                android:layout_marginStart="@dimen/margin_space"
+                android:layout_marginTop="@dimen/margin_space"
+                android:layout_marginEnd="@dimen/margin_space"
+                android:text="Terimakasih telah berbelanja di Kawarung. Transaksi anda dengan invoice INV000052 telah dicatat"
+                android:textSize="14sp" />
+
+            <TextView
+                style="@style/TextSemiBold"
+                android:layout_marginStart="@dimen/margin_space"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="@dimen/margin_space"
+                android:text="BATAS WAKTU PEMBAYARAN"
+                android:textColor="@color/boulder" />
+
+            <TextView
+                style="@style/TextSemiBold"
+                android:layout_marginStart="@dimen/margin_space"
+                android:layout_marginEnd="@dimen/margin_space"
+                android:textSize="14sp"
+                tools:text="01 Juli 2020, 07:00" />
+
+            <TextView
+                style="@style/TextSemiBold"
+                android:layout_marginStart="@dimen/margin_space"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="@dimen/margin_space"
+                android:text="TOTAL BAYAR"
+                android:textColor="@color/boulder" />
+
+            <TextView
+                style="@style/TextSemiBold"
+                android:layout_marginStart="@dimen/margin_space"
+                android:layout_marginEnd="@dimen/margin_space"
+                android:textSize="14sp"
+                tools:text="Rp9.500" />
+
+            <TextView
+                style="@style/TextRegular"
+                android:layout_marginStart="@dimen/margin_space"
+                android:layout_marginEnd="@dimen/margin_space"
+                android:text="Silakan transfer ke rekening tujuan berikut, a.n Obi Ismail :"
+                android:textSize="14sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_space"
+                android:layout_marginEnd="@dimen/margin_space"
+                android:background="@color/colorWhiteSmoke">
+
+                <ImageView
+                    android:id="@+id/logo_bank"
+                    android:layout_width="90dp"
+                    android:layout_height="56dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/mandiri" />
+
+                <TextView
+                    android:id="@+id/bank_name_of_logo"
+                    style="@style/TextRegular"
+                    android:layout_below="@+id/logo_bank"
+                    android:layout_marginStart="10dp"
+                    android:text="Bank Mandiri" />
+
+                <TextView
+                    style="@style/TextRegular"
+                    android:layout_below="@+id/bank_name_of_logo"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="9.4dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="No Rekening: 1010010240263" />
+
+                <TextView
+                    style="@style/TextRegular"
+                    android:layout_below="@+id/bank_name_of_logo"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="9.4dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/orange_a200"
+                    android:paddingStart="10dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="2dp"
+                    android:text="Salin"
+                    android:textColor="@color/colorWhite" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="@dimen/margin_space"
+                android:layout_marginTop="10.6dp"
+                android:layout_marginEnd="@dimen/margin_space"
+                android:background="@drawable/bg_rounded"
+                android:backgroundTint="@color/colorRed">
+
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="15dp"
+                    android:src="@drawable/ic_share"
+                    android:tint="@color/colorWhite" />
+
+                <TextView
+                    style="@style/TextTitleSemiBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Konfirmasi Pembayaran"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="14sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_space">
+
+                <TextView
+                    android:id="@+id/date_invoice"
+                    style="@style/TextRegular"
+                    android:layout_alignParentEnd="true"
+                    tools:text="15:05, 09 Juni 2020" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/date_invoice"
+                    android:layout_marginStart="@dimen/margin_space"
+                    android:layout_marginEnd="@dimen/margin_space"
+                    android:layout_marginBottom="10dp"
+                    app:cardCornerRadius="3dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/no_invoice"
+                            style="@style/TextRegular"
+                            android:layout_width="match_parent"
+                            android:background="@color/colorWhiteSmoke"
+                            android:padding="10dp"
+                            tools:text="Invoice: INV000053" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_sub_item"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_space"
+                android:background="@drawable/bg_checkout"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/tv_total_qty"
+                    style="@style/TextRegular"
+                    android:text="Jumlah / QTY"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/tv_sub_total"
+                    style="@style/TextRegular"
+                    android:layout_below="@+id/tv_total_qty"
+                    android:layout_marginTop="5dp"
+                    android:text="Subtotal"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/tv_postal_fee"
+                    style="@style/TextRegular"
+                    android:layout_below="@+id/tv_sub_total"
+                    android:layout_marginTop="5dp"
+                    android:text="Ongkir"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/tv_discount_price"
+                    style="@style/TextRegular"
+                    android:layout_below="@+id/tv_postal_fee"
+                    android:layout_marginTop="5dp"
+                    android:text="Diskon / Potongan\nHarga"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/qty_checkout"
+                    style="@style/TextRegular"
+                    android:layout_alignParentEnd="true"
+                    android:text="1"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/price_sub_total"
+                    style="@style/TextRegular"
+                    android:layout_below="@+id/tv_total_qty"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:text="Rp12.000"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/price_postal_fee"
+                    style="@style/TextRegular"
+                    android:layout_below="@+id/price_sub_total"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:text="Rp10.000"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/price_discount"
+                    style="@style/TextRegular"
+                    android:layout_below="@+id/price_postal_fee"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:text="Rp0"
+                    android:textColor="@color/colorWhite" />
+
+                <View
+                    android:id="@+id/view_divider_checkout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_below="@+id/tv_discount_price"
+                    android:layout_marginTop="7dp"
+                    android:background="@color/colorGray" />
+
+                <TextView
+                    android:id="@+id/sub_total"
+                    style="@style/TextRegular"
+                    android:layout_below="@+id/view_divider_checkout"
+                    android:layout_marginTop="7dp"
+                    android:text="TOTAL PEMBAYARAN"
+                    android:textColor="@color/colorWhite" />
+
+                <TextView
+                    android:id="@+id/sub_total_checkout"
+                    style="@style/TextRegular"
+                    android:layout_below="@+id/view_divider_checkout"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="7dp"
+                    android:text="Rp22.000"
+                    android:textColor="@color/colorWhite" />
+
+            </RelativeLayout>
+
+            <TextView
+                style="@style/TextSemiBold"
+                android:layout_marginStart="@dimen/margin_space"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="@dimen/margin_space"
+                android:text="ALAMAT PENGIRIMAN"
+                android:textColor="@color/boulder" />
+
+            <TextView
+                style="@style/TextRegular"
+                android:layout_marginStart="@dimen/margin_space"
+                android:layout_marginEnd="@dimen/margin_space"
+                android:textSize="14sp"
+                tools:text="Dsn.Parumasan RT27/RW11 No.15, Paseh Kaler, Paseh, Sumedang Jawa Barat 45381" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/colorGray" />
+
+            <TextView
+                style="@style/TextSemiBold"
+                android:layout_marginStart="@dimen/margin_space"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="@dimen/margin_space"
+                android:text="CATATAN PRODUK"
+                android:textColor="@color/boulder" />
+
+            <TextView
+                style="@style/TextRegular"
+                android:layout_marginStart="@dimen/margin_space"
+                android:layout_marginEnd="@dimen/margin_space"
+                android:textSize="14sp"
+                tools:text="-" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/colorGray" />
+
+            <TextView
+                android:layout_marginStart="@dimen/margin_space"
+                android:layout_marginEnd="@dimen/margin_space"
+                android:id="@+id/status_history"
+                style="@style/TextRegular"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorWhiteSmoke"
+                android:padding="10dp"
+                tools:text="Status: Menunggu Pembayaran" />
+
+            <RelativeLayout
+                android:layout_marginEnd="@dimen/margin_space"
+                android:layout_marginBottom="31.5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textColor="@color/colorRed"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:text="Lihat Riwayat Status >"
+                    style="@style/TextRegular"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </LinearLayout>

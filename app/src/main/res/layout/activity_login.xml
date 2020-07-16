@@ -226,7 +226,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/fb"
+                    android:id="@+id/google_sign"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_background_social_media"

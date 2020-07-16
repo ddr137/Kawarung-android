@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Kawarung</string>
     <string name="facebook_app_id">661413757770107</string> <string name="fb_login_protocol_scheme">fb661413757770107</string>
+    <string name="web_client_id">260659554902-coahcrls8l6jfb3qfn9atn3dsmhui6lp.apps.googleusercontent.com</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login">Login</string>

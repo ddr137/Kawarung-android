@@ -42,10 +42,10 @@
 
         <LinearLayout
             android:id="@+id/ll_detail_history_purchase"
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <LinearLayout
                 android:id="@+id/confirm"
@@ -291,8 +291,8 @@
                     android:layout_below="@+id/price_postal_fee_history_purchase"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="5dp"
-                    tools:text="Rp0"
-                    tools:textColor="@color/colorWhite" />
+                    android:textColor="@color/colorWhite"
+                    tools:text="Rp0" />
 
                 <View
                     android:id="@+id/view_divider_checkout"
@@ -393,29 +393,29 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:visibility="gone"
                 android:id="@+id/pending_shipment_detail_purchase"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_height="wrap_content">
+                android:visibility="gone">
 
                 <Button
-                    android:layout_marginBottom="@dimen/margin_space"
+                    style="@style/ButtonGradient"
                     android:layout_marginStart="@dimen/margin_space"
                     android:layout_marginEnd="@dimen/margin_space"
-                    android:textColor="@color/colorBlack"
-                    android:text="Barang Tidak Sesuai"
+                    android:layout_marginBottom="@dimen/margin_space"
                     android:background="@drawable/btn_bg_rounded_white"
-                    style="@style/ButtonGradient"/>
+                    android:text="Barang Tidak Sesuai"
+                    android:textColor="@color/colorBlack" />
 
                 <Button
-                    android:layout_marginBottom="@dimen/margin_space"
+                    style="@style/ButtonGradient"
                     android:layout_marginStart="@dimen/margin_space"
                     android:layout_marginEnd="@dimen/margin_space"
-                    android:text="Barang Telah Diterima"
-                    android:backgroundTint="@color/colorRed"
+                    android:layout_marginBottom="@dimen/margin_space"
                     android:background="@drawable/bg_rounded"
-                    style="@style/ButtonGradient"/>
+                    android:backgroundTint="@color/colorRed"
+                    android:text="Barang Telah Diterima" />
 
             </LinearLayout>
 
@@ -429,9 +429,9 @@
 
         <ProgressBar
             android:id="@+id/pg_loading"
-            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
 
     </RelativeLayout>
 

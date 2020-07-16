@@ -27,10 +27,6 @@ class DetailHistoryPurchaseActivity : AppCompatActivity() {
         toolbarUI()
         setupViewModel()
         setupRecycler()
-        status_history_purchase.setOnClickListener {
-            val moveIntent = Intent(this, HistoryStatusActivity::class.java)
-            startActivity(moveIntent)
-        }
     }
 
     private fun setupRecycler() {
@@ -133,6 +129,13 @@ class DetailHistoryPurchaseActivity : AppCompatActivity() {
         )
         address_detail_purchase.text = data.address.address
         note_detail_history_purchase.text = data.note
+
+        status_history_purchase.setOnClickListener {
+            val moveIntent = Intent(this, HistoryStatusActivity::class.java).apply {
+                putExtra("id_purchase", data.id)
+            }
+            startActivity(moveIntent)
+        }
     }
 
     private fun handleUIState(it: HistoryState) {

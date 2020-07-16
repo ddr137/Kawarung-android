@@ -7,6 +7,7 @@ import com.nahltech.kawarung.data.models.cart.DataX
 import com.nahltech.kawarung.data.models.historyPurchase.HistoryPurchase
 import com.nahltech.kawarung.data.models.historyPurchase.detailHistoryPurchase.Data
 import com.nahltech.kawarung.data.models.historyPurchase.detailHistoryPurchase.DetailHistoryPurchase
+import com.nahltech.kawarung.data.models.historyStatus.HistoryStatus
 import com.nahltech.kawarung.data.network.ApiClient
 import com.nahltech.kawarung.utils.SingleLiveEvent
 import retrofit2.Call
@@ -16,6 +17,7 @@ import retrofit2.Response
 class HistoryViewModel : ViewModel() {
     private var api = ApiClient.instance()
     private var historyPurchase = MutableLiveData<List<com.nahltech.kawarung.data.models.historyPurchase.Data>>()
+    private var historyStatus = MutableLiveData<List<com.nahltech.kawarung.data.models.historyStatus.Data>>()
     private var detailHistoryPurchase = MutableLiveData<Data>()
     private var productPurchase = MutableLiveData<List<DataX>>()
     private var state: SingleLiveEvent<HistoryState> = SingleLiveEvent()
@@ -109,6 +111,40 @@ class HistoryViewModel : ViewModel() {
         })
     }
 
+    fun fetchHistoryStatus(user_id: String, id_purchase: String, token: String) {
+        state.value = HistoryState.IsLoading(true)
+        api.historyStatusPurchase(user_id, id_purchase, token).enqueue(object :
+            Callback<HistoryStatus> {
+            override fun onFailure(
+                call: Call<HistoryStatus>,
+                t: Throwable
+            ) {
+                state.value = HistoryState.Error(t.message)
+            }
+
+            override fun onResponse(
+                call: Call<HistoryStatus>,
+                response: Response<HistoryStatus>
+            ) {
+                if (response.isSuccessful) {
+                    if (response.code() == 200) {
+                        val body = response.body() as HistoryStatus
+                        val r = body.data
+                        historyStatus.postValue(r)
+                        state.value = HistoryState.IsSuccess(200)
+                    } else if (response.code() == 204) {
+                        state.value = HistoryState.Failed("Tidak ada data")
+                    }
+                } else {
+                    state.value =
+                        HistoryState.Error("Terjadi kesalahan. Gagal mendapatkan response")
+                }
+                state.value = HistoryState.IsLoading(false)
+            }
+        })
+    }
+
+    fun getHistoryStatus() = historyStatus
     fun getProductDetailPurchase() = productPurchase
     fun getHistoryPurchase() = historyPurchase
     fun getDetailHistoryPurchase() = detailHistoryPurchase

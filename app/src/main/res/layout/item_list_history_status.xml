@@ -1,41 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:background="@color/colorWhite"
-    android:paddingTop="15dp"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:paddingTop="15dp">
 
     <View
-        android:layout_marginTop="4dp"
         android:id="@+id/circle_history_status"
-        android:layout_marginStart="15dp"
-        android:background="@drawable/circle_red"
         android:layout_width="14dp"
-        android:layout_height="14dp"/>
+        android:layout_height="14dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/circle_red" />
 
     <TextView
-        android:textSize="14sp"
         android:id="@+id/title_history_status"
+        style="@style/TextRegular"
         android:layout_marginStart="10.2dp"
         android:layout_toEndOf="@+id/circle_history_status"
         android:text="Pemesanan Selesai"
-        style="@style/TextRegular"/>
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/date_history_status"
-        android:textColor="@color/oslo_gray"
+        style="@style/TextRegular"
         android:layout_below="@+id/title_history_status"
         android:layout_marginStart="10.2dp"
         android:layout_toEndOf="@+id/circle_history_status"
         android:text="09 Juni 2020, 20:17 WIB"
-        style="@style/TextRegular"/>
+        android:textColor="@color/oslo_gray" />
 
     <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
         android:layout_below="@+id/date_history_status"
         android:layout_marginTop="15dp"
-        android:background="@color/colorGray"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"/>
+        android:background="@color/colorGray" />
 
 </RelativeLayout>

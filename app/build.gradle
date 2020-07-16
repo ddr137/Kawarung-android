@@ -75,4 +75,7 @@ dependencies {
     // Expanded Text
     implementation 'com.ms-square:expandableTextView:0.1.4'
 
+    //fb
+    implementation 'com.facebook.android:facebook-android-sdk:4.42.0'
+
 }

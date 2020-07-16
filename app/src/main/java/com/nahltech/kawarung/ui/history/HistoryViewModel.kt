@@ -2,6 +2,8 @@ package com.nahltech.kawarung.ui.history
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.nahltech.kawarung.data.models.cart.Cart
+import com.nahltech.kawarung.data.models.cart.DataX
 import com.nahltech.kawarung.data.models.historyPurchase.HistoryPurchase
 import com.nahltech.kawarung.data.models.historyPurchase.detailHistoryPurchase.Data
 import com.nahltech.kawarung.data.models.historyPurchase.detailHistoryPurchase.DetailHistoryPurchase
@@ -15,6 +17,7 @@ class HistoryViewModel : ViewModel() {
     private var api = ApiClient.instance()
     private var historyPurchase = MutableLiveData<List<com.nahltech.kawarung.data.models.historyPurchase.Data>>()
     private var detailHistoryPurchase = MutableLiveData<Data>()
+    private var productPurchase = MutableLiveData<List<DataX>>()
     private var state: SingleLiveEvent<HistoryState> = SingleLiveEvent()
 
     fun fetchHistoryPurchase(id_user: String, token: String) {
@@ -75,6 +78,36 @@ class HistoryViewModel : ViewModel() {
             })
     }
 
+    fun fetchProductPurchase(token: String, user_id: String, id_purchase: String) {
+        state.value = HistoryState.IsLoading(true)
+        api.detailHistoryProductPurchase(token, user_id, id_purchase).enqueue(object :
+            Callback<Cart> {
+            override fun onFailure(
+                call: Call<Cart>,
+                t: Throwable
+            ) {
+                state.value = HistoryState.Error(t.message)
+            }
+
+            override fun onResponse(
+                call: Call<Cart>,
+                response: Response<Cart>
+            ) {
+                if (response.isSuccessful) {
+                    val body = response.body() as Cart
+                    if (response.code() == 200) {
+                        val r = body.data.orderProducts.data
+                        productPurchase.postValue(r)
+                    }
+                } else {
+                    state.value = HistoryState.Error("Terjadi kesalahan. Gagal mendapatkan response")
+                }
+                state.value = HistoryState.IsLoading(false)
+            }
+        })
+    }
+
+    fun getProductDetailPurchase() = productPurchase
     fun getHistoryPurchase() = historyPurchase
     fun getDetailHistoryPurchase() = detailHistoryPurchase
     fun getState() = state

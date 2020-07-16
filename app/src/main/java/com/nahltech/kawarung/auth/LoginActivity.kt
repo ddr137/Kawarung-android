@@ -1,29 +1,117 @@
 package com.nahltech.kawarung.auth
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.facebook.*
+import com.facebook.appevents.AppEventsLogger
+import com.facebook.login.LoginManager
+import com.facebook.login.LoginResult
 import com.nahltech.kawarung.MainActivity
 import com.nahltech.kawarung.R
 import com.nahltech.kawarung.utils.Constants
 import kotlinx.android.synthetic.main.activity_login.*
+import org.json.JSONObject
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 class LoginActivity : AppCompatActivity() {
     private lateinit var authViewModel: AuthViewModel
+    private var callbackManager: CallbackManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        FacebookSdk.sdkInitialize(applicationContext)
+        AppEventsLogger.activateApp(this)
         setContentView(R.layout.activity_login)
+        callbackManager = CallbackManager.Factory.create()
+        hashKey()
+        loginFacebook()
         clickIntent()
         toolbarUI()
         setupViewModel()
         doLogin()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        callbackManager!!.onActivityResult(requestCode, resultCode, data)
+    }
+
+    private fun loginFacebook() {
+        imgbtn_fb_login.setOnClickListener {
+            btn_fb_login.performClick()
+        }
+        LoginManager.getInstance().logOut()
+        btn_fb_login.setReadPermissions("email", "public_profile")
+        btn_fb_login.registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
+            override fun onSuccess(loginResult: LoginResult) {
+                val data_request = GraphRequest.newMeRequest(
+                    loginResult.accessToken
+                ) { json_object, response ->
+                    try {
+                        val jsonObject = JSONObject(json_object.toString())
+                        val s_id = jsonObject["id"].toString()
+                        val s_name = jsonObject["name"].toString()
+                        val s_email = jsonObject["email"].toString()
+                        //final String s_phone = jsonObject.get("phone").toString();
+                        val inputMethodManager =
+                            this@LoginActivity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        inputMethodManager.hideSoftInputFromWindow(
+                            this@LoginActivity.window.decorView.rootView
+                                .windowToken, 0
+                        )
+
+                        Log.d("SocmedLogin", ""+s_id+","+s_name)
+                        authViewModel.fetchFacebook("facebook", s_id, s_name, s_email)
+                    } catch (e: Exception) {
+                        Log.e("SocmedLogin", e.toString())
+                        e.printStackTrace()
+                    }
+                }
+                val permission_param = Bundle()
+                permission_param.putString("fields", "id,email,name")
+                data_request.parameters = permission_param
+                data_request.executeAsync()
+            }
+
+            override fun onCancel() {
+                Log.d("SocmedLogin", "Cancel")
+            }
+
+            override fun onError(exception: FacebookException) {
+                Log.d("SocmedLogin", "Facebook $exception")
+            }
+        })
+    }
+
+    @SuppressLint("PackageManagerGetSignatures")
+    private fun hashKey() {
+        try {
+            val info = packageManager.getPackageInfo(
+                "com.nahltech.kawarung", PackageManager.GET_SIGNATURES
+            )
+            for (signature in info.signatures) {
+                val md =
+                    MessageDigest.getInstance("SHA1")
+                md.update(signature.toByteArray())
+                val sign = Base64
+                    .encodeToString(md.digest(), Base64.DEFAULT)
+                Log.d("MYKEYHASH:", sign)
+            }
+        } catch (e: PackageManager.NameNotFoundException) {
+        } catch (e: NoSuchAlgorithmException) {
+        }
     }
 
     private fun clickIntent() {
@@ -81,6 +169,16 @@ class LoginActivity : AppCompatActivity() {
             is UserState.Validate -> {
                 it.password?.let {
                     setPasswordError(it)
+                }
+            }
+            is UserState.ErrorSocmed -> {
+                isLoading(false)
+                toast(it.err)
+                if(it.status == "204"){
+                    startActivity(Intent(this@LoginActivity, RegisterActivity::class.java).apply {
+                        putExtra("name", it.name)
+                        putExtra("email", it.email)
+                    })
                 }
             }
             is UserState.Success -> {

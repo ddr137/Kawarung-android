@@ -1,13 +1,15 @@
 package com.nahltech.kawarung.data.models.historyPurchase.detailHistoryPurchase
 
+import com.google.gson.annotations.SerializedName
+
 data class DataX(
-    val discount: String,
-    val discount_price: String,
-    val id: Int,
-    val image: String,
-    val name: String,
-    val price: String,
-    val product_id: String,
-    val qty: String,
-    val slug: String
+    @SerializedName("discount") val discount: String,
+    @SerializedName("discount_price") val discount_price: String,
+    @SerializedName("id") val id: Int,
+    @SerializedName("image") val image: String,
+    @SerializedName("name") val name: String,
+    @SerializedName("price") val price: String,
+    @SerializedName("product_id") val product_id: String,
+    @SerializedName("qty") val qty: String,
+    @SerializedName("slug") val slug: String
 )

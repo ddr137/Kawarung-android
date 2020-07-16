@@ -202,4 +202,21 @@ interface ApiService {
         @Path("user_id") user_id: String,
         @Path("id_purchase") id_purchase: String
     ): Call<DetailHistoryPurchase>
+
+    @GET("api/users/{user_id}/shopping/{id_purchase}")
+    fun detailHistoryProductPurchase(
+        @Header("Authorization") token: String,
+        @Path("user_id") user_id: String,
+        @Path("id_purchase") id_purchase: String
+    ): Call<Cart>
+
+    /** Login Facebook **/
+    @FormUrlEncoded
+    @POST("api/auth/login_socmed")
+    fun postFacebook(
+        @Field("provider") provider: String,
+        @Field("provider_id") provider_id: String,
+        @Field("provider_name") provider_name: String,
+        @Field("provider_email") provider_email: String
+    ): Call<WrappedResponse<User>>
 }

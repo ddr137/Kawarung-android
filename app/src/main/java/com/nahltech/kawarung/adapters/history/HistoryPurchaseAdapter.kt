@@ -6,6 +6,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.HtmlCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.nahltech.kawarung.R
@@ -43,9 +44,21 @@ class HistoryPurchaseAdapter(
         @SuppressLint("SetTextI18n")
         fun bind(history: Data, context: Context) {
             itemView.date_invoice.text = history.created_at
-            itemView.no_invoice.text = "Invoice: ${history.invoice}"
-            if (history.order_status == "confirm") {
-                itemView.status_history.text = "Status: Menunggu Pembayaran"
+            itemView.no_invoice.text = HtmlCompat.fromHtml(
+                "Invoice: " + "<b>" + history.invoice + "</b>",
+                HtmlCompat.FROM_HTML_MODE_LEGACY
+            )
+
+            when (history.order_status) {
+                "confirm" -> {
+                    itemView.status_history.text = "Status: Menunggu Pembayaran"
+                }
+                "shipping" -> {
+                    itemView.status_history.text = "Status: Sedang Menghitung Ongkir"
+                }
+                "in_process" -> {
+                    itemView.status_history.text = "Status: Menunggu Konfirmasi Admin"
+                }
             }
 
             // Create layout manager with initial prefetch item count
@@ -64,9 +77,13 @@ class HistoryPurchaseAdapter(
             itemView.rv_sub_item.setRecycledViewPool(viewPool)
 
             itemView.detail_history_purchase.setOnClickListener {
-                context.startActivity(Intent(context, DetailHistoryPurchaseActivity::class.java).apply {
-                    putExtra("id_purchase", history.id)
-                })
+                context.startActivity(
+                    Intent(
+                        context,
+                        DetailHistoryPurchaseActivity::class.java
+                    ).apply {
+                        putExtra("id_purchase", history.id)
+                    })
             }
 
         }

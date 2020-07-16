@@ -192,7 +192,8 @@ interface ApiService {
     @FormUrlEncoded
     @POST("api/product/search")
     fun searchProduct(
-        @Field("term") term: String
+        @Field("term") term: String,
+        @Field("filter") filter: String
     ): Call<WrappedListResponse<Product>>
 
     /** Detail History Purchase **/

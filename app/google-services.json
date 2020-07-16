@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "260659554902",
+    "firebase_url": "https://kawarung-9394c.firebaseio.com",
+    "project_id": "kawarung-9394c",
+    "storage_bucket": "kawarung-9394c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:260659554902:android:446059e557b1b0dfb4e9f7",
+        "android_client_info": {
+          "package_name": "com.nahltech.kawarung"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "260659554902-5vnav7m7eegen8ohvrcsj0ptnkjkodag.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nahltech.kawarung",
+            "certificate_hash": "fcefecb1dd14848a32c7f733c9fe70fcc53f85bf"
+          }
+        },
+        {
+          "client_id": "260659554902-coahcrls8l6jfb3qfn9atn3dsmhui6lp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCr1yIkHm5qTzGuTqCSUF73pI7qjWaehmc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "260659554902-coahcrls8l6jfb3qfn9atn3dsmhui6lp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

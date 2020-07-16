@@ -36,11 +36,13 @@ class HistoryViewModel : ViewModel() {
                 response: Response<HistoryPurchase>
             ) {
                 if (response.isSuccessful) {
-                    val body = response.body() as HistoryPurchase
                     if (response.code() == 200) {
+                        val body = response.body() as HistoryPurchase
                         val r = body.data
                         historyPurchase.postValue(r)
                         state.value = HistoryState.IsSuccess(200)
+                    } else if (response.code() == 204) {
+                        state.value = HistoryState.Failed("Tidak ada data")
                     }
                 } else {
                     state.value =

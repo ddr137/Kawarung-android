@@ -1,5 +1,6 @@
 package com.nahltech.kawarung.ui.history
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nahltech.kawarung.R
 import com.nahltech.kawarung.adapters.history.HistoryPurchaseAdapter
+import com.nahltech.kawarung.auth.LoginActivity
 import com.nahltech.kawarung.utils.Constants
 import kotlinx.android.synthetic.main.fragment_history.*
 
@@ -29,7 +31,16 @@ class HistoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecycler()
-        setupViewModel()
+        if (context?.let { Constants.getToken(it) } == "undefined"
+            && context?.let { Constants.getIdUser(it) } == "undefined"
+        ) {
+            startActivity(Intent(context, LoginActivity::class.java).apply {
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            })
+        } else {
+            setupViewModel()
+        }
     }
 
     override fun onResume() {
@@ -58,6 +69,11 @@ class HistoryFragment : Fragment() {
             is HistoryState.Error -> {
                 toast(it.err)
                 isLoading(false)
+            }
+            is HistoryState.Failed -> {
+                rv_history_purchase.visibility = View.GONE
+                sh_history_purchase.visibility = View.GONE
+                state_empty_history_purchase.visibility = View.VISIBLE
             }
             is HistoryState.IsSuccess -> {
                 //toast(it.what.toString())

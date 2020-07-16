@@ -9,6 +9,7 @@ import com.nahltech.kawarung.data.models.best_selling.Product
 import com.nahltech.kawarung.data.models.cart.Cart
 import com.nahltech.kawarung.data.models.historyPurchase.HistoryPurchase
 import com.nahltech.kawarung.data.models.historyPurchase.detailHistoryPurchase.DetailHistoryPurchase
+import com.nahltech.kawarung.data.models.historyStatus.HistoryStatus
 import com.nahltech.kawarung.utils.WrappedListResponse
 import com.nahltech.kawarung.utils.WrappedResponse
 import io.reactivex.Observable
@@ -220,4 +221,12 @@ interface ApiService {
         @Field("provider_name") provider_name: String,
         @Field("provider_email") provider_email: String
     ): Call<WrappedResponse<User>>
+
+    /** History Status Purchase **/
+    @GET("api/users/{user_id}/shopping/{purchase_id}/status")
+    fun historyStatusPurchase(
+        @Path("user_id") user_id: String,
+        @Path("purchase_id") id_purchase: String,
+        @Header("Authorization") token: String
+    ): Call<HistoryStatus>
 }

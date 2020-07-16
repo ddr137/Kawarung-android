@@ -1,6 +1,7 @@
 package com.nahltech.kawarung.ui.history
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -26,6 +27,10 @@ class DetailHistoryPurchaseActivity : AppCompatActivity() {
         toolbarUI()
         setupViewModel()
         setupRecycler()
+        status_history_purchase.setOnClickListener {
+            val moveIntent = Intent(this, HistoryStatusActivity::class.java)
+            startActivity(moveIntent)
+        }
     }
 
     private fun setupRecycler() {

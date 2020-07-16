@@ -27,7 +27,7 @@
             <TextView
                 style="@style/TextRegular"
                 android:layout_gravity="center_horizontal"
-                android:text="Checkout Berhasil"
+                android:text="Riwayat Status"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp" />
 

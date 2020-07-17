@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nahltech.kawarung.R
 import com.nahltech.kawarung.adapters.CheckoutProductAdapter
+import com.nahltech.kawarung.ui.confirmPayment.ConfirmPaymentActivity
 import com.nahltech.kawarung.utils.Constants
 import kotlinx.android.synthetic.main.activity_detail_history_purchase.*
 import java.text.DecimalFormat
@@ -133,6 +134,14 @@ class DetailHistoryPurchaseActivity : AppCompatActivity() {
         status_history_purchase.setOnClickListener {
             val moveIntent = Intent(this, HistoryStatusActivity::class.java).apply {
                 putExtra("id_purchase", data.id)
+            }
+            startActivity(moveIntent)
+        }
+
+        confirm_payment_purchase.setOnClickListener {
+            val moveIntent = Intent(this, ConfirmPaymentActivity::class.java).apply {
+                putExtra("id_purchase", data.id)
+                putExtra("total", data.total)
             }
             startActivity(moveIntent)
         }

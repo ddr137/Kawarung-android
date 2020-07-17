@@ -14,6 +14,7 @@ import com.nahltech.kawarung.utils.WrappedListResponse
 import com.nahltech.kawarung.utils.WrappedResponse
 import io.reactivex.Observable
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -229,4 +230,18 @@ interface ApiService {
         @Path("purchase_id") id_purchase: String,
         @Header("Authorization") token: String
     ): Call<HistoryStatus>
+
+    /** Confirm Payment **/
+    @Multipart
+    @POST("/api/users/{user_id}/shopping/payment-confirm")
+    fun confirmPayment(
+        @Header("Authorization") token : String,
+        @Path("user_id") user_id: String,
+        @Part("order_id") orderId: RequestBody,
+        @Part("account_number") accountNumber: RequestBody,
+        @Part("owner_name") ownerName: RequestBody,
+        @Part("bank_name") bankName: RequestBody,
+        @Part("total") total: RequestBody,
+        @Part image: MultipartBody.Part
+    ): Call<MessageOnly>
 }

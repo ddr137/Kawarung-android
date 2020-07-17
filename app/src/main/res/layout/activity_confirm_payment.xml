@@ -90,10 +90,10 @@
             app:layout_constraintTop_toBottomOf="@+id/textView9">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/passwordNew"
+                android:id="@+id/no_account_bank"
                 style="@style/editText"
                 android:layout_margin="0dp"
-                android:inputType="text" />
+                android:inputType="number" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -142,11 +142,13 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:id="@+id/img_proof"
             android:background="#bcbcbc"
             android:layout_width="match_parent"
             android:layout_height="155dp"/>
 
         <ImageButton
+            android:id="@+id/pick_proof"
             android:padding="5dp"
             android:background="@drawable/badge_grey"
             android:src="@drawable/ic_camera_grey"
@@ -158,6 +160,7 @@
     </RelativeLayout>
 
     <Button
+        android:id="@+id/btn_send_confirm_payment"
         android:text="Kirim"
         android:layout_marginBottom="@dimen/margin_space"
         android:layout_marginStart="@dimen/margin_space"
@@ -165,5 +168,38 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/btn_gradient_rounded"
         style="@style/ButtonGradient"/>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:layout_marginBottom="@dimen/margin_space"
+        android:layout_marginStart="@dimen/margin_space"
+        android:layout_marginEnd="@dimen/margin_space"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/shConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/login"
+        android:visibility="gone">
+
+        <RelativeLayout
+            style="@style/ButtonGradient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="45dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/poppins_semi_bold"
+                android:text="@string/please_wait"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
 </RelativeLayout>
